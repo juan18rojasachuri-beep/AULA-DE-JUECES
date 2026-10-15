@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Plataforma de estudio para jueces de atletismo de la Liga de Atletismo del Meta. Reglamento World Athletics 2026, nomenclatura, guías y práctica.">
+<meta name="keywords" content="atletismo, jueces, arbitros, reglamento, World Athletics, Liga Meta, Colombia, nomenclatura">
+<meta name="author" content="Liga de Atletismo del Meta">
+<meta property="og:title" content="Aula de Jueces - Liga de Atletismo del Meta">
+<meta property="og:description" content="Plataforma interactiva de estudio para jueces de atletismo. Reglamento World Athletics 2026, siglas, quices y guías oficiales.">
+<meta property="og:type" content="website">
+<title>Aula de Jueces</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: plano de marcación del estadio (izquierda) + planilla del puesto acoplada (derecha). En celular, plano arriba y planilla debajo. Firma: el plano se acerca al puesto elegido. */
+:root{
+  --ground:#E4E8E3; --stands:#D3D9D2; --stands-line:#C3CAC2; --apron:#BFC8BE; --paper:#F7F8F5; --sunk:#ECEFEA; --ink:#13201A; --muted:#4F5D55; --line:#CCD4CD;
+  --track:#2D5DAE; --track-deep:#24498A; --lane:#FFFFFF; --grass:#4F8D50; --grass-2:#468448; --sand:#DCC48A; --water:#8CCBEA; --mat:#1E3048; --cage:#2B3A31;
+  --mk-yellow:#F2C230; --mk-blue:#9CC2FF; --mk-green:#36B37E;
+  --accent:#24498A; --accent-soft:#DFE7F5;
+  --flag:#D99A00; --flag-soft:#FBEFC9; --card:#C21F37; --card-soft:#F8DCE1; --ok:#1B7A4F; --ok-soft:#D5EDE1;
+  --board:#0F1512; --board-ink:#F4CB45;
+  --f-display:"Barlow Condensed","Arial Narrow",sans-serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --ground:#0B110E; --stands:#141C18; --stands-line:#1C2621; --apron:#1E2823; --paper:#121A16; --sunk:#19231E; --ink:#E5EBE6; --muted:#9DAAA2; --line:#28352E;
+  --track:#2A529A; --track-deep:#1F3F78; --lane:#DCE6F6; --grass:#2A532E; --grass-2:#264B2A; --sand:#9E8650; --water:#3E86AC; --mat:#0D1726; --cage:#A9B8AE;
+  --mk-yellow:#E8B92A; --mk-blue:#9CC2FF; --mk-green:#3CC488;
+  --accent:#93B4F2; --accent-soft:#1B2D4B;
+  --flag:#F0BD33; --flag-soft:#372F14; --card:#F27186; --card-soft:#3B1B22; --ok:#5BCB97; --ok-soft:#14321F;
+  --board:#040605; --board-ink:#F4CB45; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ground:#0B110E; --stands:#141C18; --stands-line:#1C2621; --apron:#1E2823; --paper:#121A16; --sunk:#19231E; --ink:#E5EBE6; --muted:#9DAAA2; --line:#28352E;
+  --track:#2A529A; --track-deep:#1F3F78; --lane:#DCE6F6; --grass:#2A532E; --grass-2:#264B2A; --sand:#9E8650; --water:#3E86AC; --mat:#0D1726; --cage:#A9B8AE;
+  --mk-yellow:#E8B92A; --mk-blue:#9CC2FF; --mk-green:#3CC488;
+  --accent:#93B4F2; --accent-soft:#1B2D4B;
+  --flag:#F0BD33; --flag-soft:#372F14; --card:#F27186; --card-soft:#3B1B22; --ok:#5BCB97; --ok-soft:#14321F;
+  --board:#040605; --board-ink:#F4CB45; color-scheme:dark}
+*{box-sizing:border-box}
+html{accent-color:var(--accent);scrollbar-color:var(--line) transparent}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;caret-color:var(--accent)}
+::selection{background:var(--mk-yellow);color:#13201A}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1;margin:0}
+p{margin:0}
+code{font-family:var(--f-mono);font-size:.9em}
+a{color:var(--accent);text-underline-offset:3px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--mk-yellow);outline-offset:2px;border-radius:4px}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Encabezado */
+.top{max-width:1360px;margin:0 auto;padding-block:18px 14px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:flex-end;justify-content:space-between}
+.title h1{font-size:clamp(2.4rem,5.4vw,3.6rem);font-weight:800;text-transform:uppercase;letter-spacing:-.005em}
+.title p{color:var(--muted);font-size:.95rem;margin-top:6px}
+.route-meter{display:grid;gap:6px;min-width:220px}
+.route-meter .lbl{display:flex;justify-content:space-between;gap:12px;font-size:.88rem;color:var(--muted)}
+.route-meter .lbl b{font-family:var(--f-display);font-size:1.3rem;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
+.segs{display:grid;grid-template-columns:repeat(14,1fr);gap:3px}
+.segs i{height:8px;border-radius:2px;background:var(--line);transition:background .3s}
+.segs i.seen{background:color-mix(in srgb,var(--ok) 35%,var(--line))}
+.segs i.on{background:var(--ok)}
+.legend{display:flex;gap:12px;font-size:.78rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:6px;border-radius:2px;margin-right:5px;vertical-align:middle;background:var(--ok)}
+.legend span.s::before{background:color-mix(in srgb,var(--ok) 35%,var(--line))}
+/* Buscador */
+.finder{position:relative;flex:1 1 300px;max-width:440px;min-width:0}
+.finder input{width:100%;padding:11px 14px 11px 40px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);font-size:1rem}
+.finder input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.finder svg{position:absolute;left:12px;top:50%;width:18px;height:18px;transform:translateY(-50%);fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round}
+.results{position:absolute;z-index:10;left:0;right:0;top:calc(100% + 6px);background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 34px -14px rgba(10,30,20,.4);padding:6px;display:grid;gap:2px;max-height:min(60vh,420px);overflow-y:auto}
+.results[hidden]{display:none}
+.results button{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;width:100%;text-align:left;border:0;background:none;border-radius:8px;padding:9px 10px;cursor:pointer;min-height:44px}
+.results button:hover,.results button.sel{background:var(--sunk)}
+.results .kind{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.75rem;color:var(--muted);min-width:74px}
+.results small{display:block;color:var(--muted);font-size:.82rem}
+.results .none{padding:10px;color:var(--muted);font-size:.9rem}
+.done-card{border-radius:12px;background:var(--ok-soft);padding:14px 16px;display:grid;gap:4px}
+.done-card b{font-family:var(--f-display);font-size:1.5rem;text-transform:uppercase}
+
+/* Escenario */
+.stage{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(340px,1fr);gap:20px;align-items:start;padding-block:0 40px}
+.map{position:sticky;top:12px;min-width:0;background:var(--stands);border-radius:16px;overflow:hidden;box-shadow:0 1px 0 var(--stands-line),0 12px 32px -18px rgba(10,30,20,.35)}
+svg#stadium{display:block;width:100%;height:auto;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.map-bar{position:absolute;left:12px;right:12px;top:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;pointer-events:none}
+.map-bar > *{pointer-events:auto}
+.zoom-out{border:0;border-radius:99px;background:var(--paper);color:var(--ink);padding:7px 14px;font-family:var(--f-display);font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 14px -6px rgba(0,0,0,.35)}
+.map-note{font-size:.78rem;color:var(--muted);background:color-mix(in srgb,var(--paper) 85%,transparent);padding:4px 9px;border-radius:99px}
+.pin{cursor:pointer;outline:none}
+.pin .ring{fill:var(--paper);stroke:var(--ink);stroke-width:2;transition:transform .2s cubic-bezier(.2,.9,.2,1)}
+.pin .ico{fill:none;stroke:var(--ink);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.pin .ico .fill{fill:var(--ink);stroke:none}
+.pin .chk{display:none}
+.pin.visited .ring{stroke:var(--ok);stroke-width:2.6}
+.pin.visited .chk{display:block}
+.pin .tip{opacity:0;transition:opacity .15s;pointer-events:none}
+svg.zoomed .pin .tip{display:none}
+.map.zoomed .map-note{display:none}
+.pin .tip rect{fill:var(--ink)} .pin .tip text{fill:var(--paper);font-family:var(--f-display);font-weight:700;font-size:14px;letter-spacing:.05em;text-transform:uppercase}
+.pin:hover .tip,.pin:focus-visible .tip,.pin.active .tip{opacity:1}
+.pin:hover .ring,.pin:focus-visible .ring{transform:scale(1.12)}
+.pin.active .ring{fill:var(--mk-yellow);stroke:var(--ink)}
+.pin:focus-visible .ring{stroke:var(--mk-yellow);stroke-width:4}
+.dim{font-family:var(--f-mono);font-size:9.5px;fill:var(--muted)}
+.dim-line{stroke:var(--muted);stroke-width:.8}
+.stand-txt{font-family:var(--f-display);font-weight:700;font-size:12px;letter-spacing:.24em;fill:var(--muted);text-anchor:middle}
+.lane-num{font-family:var(--f-display);font-weight:700;font-size:6.5px;fill:var(--lane);text-anchor:middle;dominant-baseline:central}
+.board-txt{font-family:var(--f-mono);font-size:12.5px;fill:var(--board-ink)}
+
+/* Planilla acoplada */
+.panel{position:sticky;top:12px;background:var(--paper);border-radius:16px;box-shadow:0 1px 0 var(--line),0 12px 32px -18px rgba(10,30,20,.35);display:flex;flex-direction:column;max-height:calc(100vh - 24px);min-width:0;overflow:hidden}
+.p-head{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;padding:16px 18px 12px}
+.p-ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--mk-yellow);color:#13201A}
+.p-ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.p-ico svg .fill{fill:currentColor;stroke:none}
+.p-head h2{font-size:1.85rem;font-weight:800;text-transform:uppercase}
+.p-head .where{font-size:.86rem;color:var(--muted);margin-top:4px}
+.back{border:0;background:none;padding:0 18px;color:var(--accent);font-weight:700;cursor:pointer;text-align:left;font-size:.92rem}
+.tabs{display:flex;gap:2px;padding:0 12px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;flex:none}
+.tabs.more-right{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}
+.tabs button{border:0;background:none;padding:10px 10px 8px;font-family:var(--f-display);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;font-size:1rem}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--track)}
+.tabs button:hover{color:var(--ink)}
+.p-body{overflow-y:auto;padding:16px 18px 26px;display:grid;gap:18px;align-content:start;overscroll-behavior:contain}
+.p-body ul,.p-body ol{margin:0;padding-left:1.15em;display:grid;gap:7px}
+.p-body h3{font-size:1.2rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-top:6px}
+.lede{font-size:1.04rem}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.kv div{background:var(--sunk);border-radius:10px;padding:10px 12px}
+.kv b{display:block;font-family:var(--f-display);font-size:1.75rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.kv span{font-size:.84rem;color:var(--muted)}
+.note{background:var(--flag-soft);padding:10px 12px;border-radius:10px;font-size:.93rem}
+.src{font-size:.82rem;color:var(--muted)}
+.mods{display:grid;gap:8px}
+.mod{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:var(--paper);cursor:pointer;text-align:left;width:100%;transition:border-color .15s,transform .15s}
+.mod:hover{border-color:var(--accent);transform:translateY(-1px)}
+.mod b{font-family:var(--f-display);font-size:1.18rem;text-transform:uppercase;letter-spacing:.03em}
+.mod small{color:var(--muted);font-size:.85rem}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--muted);background:var(--sunk)}
+tbody tr:last-child td{border-bottom:0}
+td.num{text-align:right}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.76rem;font-weight:600;padding:1px 7px;border-radius:99px;white-space:nowrap}
+.pill.dq{background:var(--card-soft);color:var(--card)} .pill.yc{background:var(--flag-soft);color:var(--ink)} .pill.l{background:var(--accent-soft);color:var(--accent)} .pill.dns{background:var(--sunk);color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:10px;padding:10px 16px;background:var(--ink);color:var(--paper);font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1rem;cursor:pointer}
+.btn:hover{background:var(--track-deep);color:#fff}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.search{flex:1 1 200px;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--ground)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 11px;cursor:pointer;font-size:.85rem}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.terms{display:grid;gap:6px}
+.term{display:grid;grid-template-columns:minmax(66px,auto) 1fr;gap:12px;align-items:baseline;padding:8px 10px;border-radius:8px;background:var(--sunk)}
+.term b{font-family:var(--f-mono);color:var(--accent);word-break:break-word}
+.term small{display:block;color:var(--muted);font-style:italic;font-size:.8rem}
+
+/* Recorrido */
+.route{list-style:none;padding:0!important;margin:0;display:grid;gap:2px!important;counter-reset:r}
+.route li{counter-increment:r}
+.route button{display:grid;grid-template-columns:30px 28px 1fr auto;gap:10px;align-items:center;width:100%;border:0;background:none;border-radius:10px;padding:7px 8px;cursor:pointer;text-align:left}
+.route button:hover{background:var(--sunk)}
+.route .n{font-family:var(--f-display);font-weight:800;font-size:1.25rem;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.route .n::before{content:counter(r)}
+.route svg{width:24px;height:24px;fill:none;stroke:var(--ink);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.route svg .fill{fill:var(--ink);stroke:none}
+.route .t{font-weight:700;font-size:.97rem;line-height:1.25}
+.route .t small{display:block;font-weight:400;color:var(--muted);font-size:.82rem}
+.route .st{font-size:.78rem;color:var(--muted)}
+.route .done .st{color:var(--ok);font-weight:700}
+.headline{border-radius:12px;background:var(--board);color:#EDE9D6;padding:14px 16px;display:grid;gap:6px;cursor:pointer;border:0;text-align:left;width:100%}
+.headline .k{font-family:var(--f-mono);font-size:.75rem;color:var(--board-ink);letter-spacing:.08em}
+.headline b{font-size:1.02rem;line-height:1.35}
+
+/* Quiz */
+.q{display:grid;gap:10px;border:1px solid var(--line);border-radius:12px;padding:14px}
+.q .qt{font-weight:700;font-size:1.04rem}
+.opt{text-align:left;border:2px solid var(--line);background:var(--paper);border-radius:10px;padding:10px 12px;cursor:pointer;width:100%}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--card);background:var(--card-soft)}
+.opt:disabled{cursor:default}
+.fb{font-size:.92rem;background:var(--sunk);border-radius:10px;padding:10px 12px}
+.fb b.ok{color:var(--ok)} .fb b.no{color:var(--card)}
+.score{font-family:var(--f-display);font-size:3.6rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+
+/* Marcador */
+.board{background:var(--board);color:var(--board-ink);border-radius:12px;padding:12px 14px;font-family:var(--f-mono);display:grid;gap:8px}
+.board label{font-size:.75rem;letter-spacing:.1em}
+.board input{background:#000;color:var(--board-ink);border:1px solid #3a3a2a;border-radius:6px;padding:9px 10px;font-family:var(--f-mono);width:100%;caret-color:var(--board-ink)}
+.board .tok{display:grid;grid-template-columns:minmax(70px,auto) 1fr;gap:10px;font-size:.88rem;color:#F1ECD7}
+.board .tok b{color:var(--board-ink)}
+.board .tok small{display:block;color:#BDB79E}
+.news-item{border-bottom:1px solid var(--line);padding-bottom:14px;display:grid;gap:6px}
+.news-item:last-child{border-bottom:0}
+.news-item .date{font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.news-item h3{font-size:1.08rem;text-transform:none;font-family:var(--f-body);font-weight:700;letter-spacing:0;margin:0;line-height:1.3}
+.news-item .tags{display:flex;gap:5px;flex-wrap:wrap}
+.news-item .tags span{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;background:var(--accent-soft);color:var(--accent);padding:2px 7px;border-radius:99px}
+.more{border:0;background:none;color:var(--accent);padding:0;cursor:pointer;font-weight:700;font-size:.9rem;justify-self:start}
+.news-form{display:grid;gap:8px;border:1px dashed var(--line);border-radius:12px;padding:12px;margin-top:8px}
+.news-form input,.news-form textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--ground)}
+.news-form textarea{min-height:90px}
+.linkbtn{background:none;border:0;color:var(--card);cursor:pointer;padding:0;font-size:.82rem}
+.calc-row{display:flex;flex-wrap:wrap;gap:8px}
+.calc-row select,.calc-row input{padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--ground);min-width:0;max-width:100%}
+.stage-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.stage-cards div{background:var(--sunk);border-radius:10px;padding:10px}
+.stage-cards b{font-family:var(--f-display);font-size:1.6rem;font-weight:800;display:block;line-height:1}
+footer{max-width:1360px;margin:0 auto;padding-block:0 28px;font-size:.82rem;color:var(--muted)}
+
+@media (max-width:900px){
+  .stage{grid-template-columns:1fr}
+  .panel{position:static;max-height:none}
+  .map{position:relative;top:auto}
+  .pin .tip{display:none}
+  .p-body{overflow:visible}
+  .map{border-radius:12px}
+  .map-note{display:none}
+}
+@media (pointer:coarse){.seg button{min-height:44px;padding:8px 14px}.tabs button{min-height:44px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="gut">
+  <div class="top">
+    <div class="title">
+      <h1>Aula de Jueces</h1>
+      <p>Liga de Atletismo del Meta · reglamento World Athletics 2026</p>
+    </div>
+    <div class="finder" role="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
+      <input id="q" type="search" placeholder="Buscar regla, sigla o tema: TR24.7, DNF, testigo…" aria-label="Buscar en el aula" autocomplete="off" aria-controls="q-res" aria-expanded="false">
+      <div class="results" id="q-res" role="listbox" hidden></div>
+    </div>
+    <div class="route-meter" aria-live="polite">
+      <div class="lbl"><span>Puestos aprobados</span><b id="m-num">0 de 14</b></div>
+      <div class="segs" id="segs" aria-hidden="true"></div>
+      <div class="legend"><span>Aprobado</span><span class="s">Visitado</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="gut">
+  <div class="stage">
+    <div class="map">
+      <svg id="stadium" viewBox="0 0 1000 622" role="group" aria-label="Plano del estadio. Cada marcador abre lo que se juzga en ese puesto."></svg>
+      <div class="map-bar">
+        <span class="map-note">Toca un puesto del estadio</span>
+        <button class="zoom-out" id="zoom-out" type="button" hidden>Ver estadio completo</button>
+      </div>
+    </div>
+    <aside class="panel" id="panel" aria-live="polite">
+      <div class="p-head"><div class="p-ico" id="p-ico"></div><div><h2 id="p-title"></h2><p class="where" id="p-where"></p></div></div>
+      <button class="back" id="p-back" type="button" hidden>← Volver al recorrido</button>
+      <div class="tabs" id="p-tabs" role="tablist" hidden></div>
+      <div class="p-body" id="p-body"></div>
+    </aside>
+  </div>
+</main>
+<footer class="gut">Contenido de estudio basado en documentos oficiales de World Athletics. Ante cualquier diferencia prevalece el texto oficial en inglés.</footer>
+
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=s=>String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const shuffle=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(p=>p[1]);
+const reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const CATS = {
+  irm:"Marcas inválidas", res:"Resultados", hoja:"Hoja de concursos", esp:"Condiciones especiales",
+  rec:"Récords y mejores marcas", fase:"Fases", prueba:"Pruebas", comp:"Competencias", gen:"Términos generales"
+};
+const T = [
+ // [code, es, en, cat, sig]
+ ["DNF","No terminó la carrera o la marcha","Did Not Finish","irm","dns"],
+ ["DNS","No tomó la salida","Did Not Start","irm","dns"],
+ ["NM","Sin marca: ningún intento válido en un concurso","No Mark","irm","dns"],
+ ["DQ","Descalificado. Se escribe con el número de regla, p. ej. DQ TR16.8","Disqualified","irm","card"],
+ ["Q","Clasificado por puesto (carreras) o por marca mínima (concursos)","Qualified by place / standard","res","ok"],
+ ["q","Clasificado por tiempo (carreras) o sin alcanzar la marca mínima (concursos)","Qualified by time / without standard","res","ok"],
+ ["qR","Pasa a la siguiente ronda por decisión del Juez Árbitro","Advanced by the Referee","res","ok"],
+ ["qJ","Pasa a la siguiente ronda por decisión del Jurado de Apelación","Advanced by the Jury of Appeal","res","ok"],
+ ["qD","Pasa a la siguiente ronda por sorteo","Advanced by draw","res","ok"],
+ ["Re","Clasificado a la ronda de repesca","Qualified for the Repechage Round","res","ok"],
+ ["ReR","Pasa a la repesca por decisión del Juez Árbitro","Advanced to Repechage by the Referee","res","ok"],
+ ["ReJ","Pasa a la repesca por decisión del Jurado de Apelación","Advanced to Repechage by the Jury","res","ok"],
+ ["YC","Tarjeta amarilla","Yellow Card","res","flag"],
+ ["YRC","Segunda tarjeta amarilla y, en consecuencia, roja","Second Yellow Card","res","card"],
+ ["RC","Tarjeta roja","Red Card","res","card"],
+ ["L","Infracción de carril (primera, queda anotada para rondas siguientes)","Lane infringement","res","flag"],
+ [">","Rodilla flexionada (marcha atlética)","Bent knee","res","card"],
+ ["~","Pérdida de contacto (marcha atlética)","Loss of contact","res","card"],
+ ["o","Intento válido (salto de altura y garrocha)","Valid trial","hoja","ok"],
+ ["x","Intento nulo","Failed trial","hoja","card"],
+ ["-","Intento renunciado (pasa)","Passed trial","hoja",""],
+ ["r","Se retiró de la competencia","Retired from competition","hoja","dns"],
+ ["i","Marca en pista cubierta","Indoors","esp",""],
+ ["wo","Carrera solo de mujeres (salida separada en ruta, sin liebres hombres)","Women-only race","esp",""],
+ ["mx","Carrera mixta","Mixed race","esp",""],
+ ["e","Exhibición","Exhibition","esp",""],
+ ["A","Altitud: lograda por encima de 1000 m","Altitude","esp",""],
+ ["w","Con viento a favor superior a 2 m/s","Wind-assisted","esp","flag"],
+ ["W","Puntuación de combinadas con viento superior a 4 m/s","Wind-assisted CE score","esp","flag"],
+ ["NWI","Sin indicación de viento","No Wind Indication","esp",""],
+ ["UNC","No certificada: ruta sin medición internacional o calzado no declarado o no aprobado","Uncertified","esp","flag"],
+ ["WR","Récord mundial","World Record","rec",""],["WU20R","Récord mundial sub-20","World U20 Record","rec",""],
+ ["WIR","Récord mundial en pista cubierta","World Indoor Record","rec",""],["WU20IR","Récord mundial sub-20 en pista cubierta","World U20 Indoor Record","rec",""],
+ ["OR","Récord olímpico","Olympic Record","rec",""],["YOR","Récord de Juegos Olímpicos de la Juventud (sub-18)","Youth Olympic Record","rec",""],
+ ["AR","Récord de área (p. ej., sudamericano)","Area Record","rec",""],["AIR","Récord de área en pista cubierta","Area Indoor Record","rec",""],
+ ["NR","Récord nacional","National Record","rec",""],["NU20R","Récord nacional sub-20","National U20 Record","rec",""],["NIR","Récord nacional en pista cubierta","National Indoor Record","rec",""],
+ ["CR","Récord del campeonato","Championship Record","rec",""],["MR","Récord del mitin","Meeting Record","rec",""],
+ ["WB","Mejor marca mundial (pruebas sin récord oficial)","World Best","rec",""],["WU18B","Mejor marca mundial sub-18","World U18 Best","rec",""],
+ ["PB","Mejor marca personal","Personal Best","rec",""],["SB","Mejor marca de la temporada","Season Best","rec",""],["QB","Mejor marca del periodo de clasificación","Qualification Best","rec",""],
+ ["WL","Mejor marca mundial del año","World Leading","rec",""],["WU20L","Mejor marca mundial sub-20 del año","World U20 Leading","rec",""],
+ ["R1","Ronda 1: primera fase de una carrera con varias rondas","Round 1","fase",""],["SF","Semifinal","Semi-Final","fase",""],
+ ["F","Final","Final","fase",""],["FA / FB","Final A / Final B","Final A / B","fase",""],["h","Serie (h1, h2…)","Heat","fase",""],
+ ["QA / QB","Grupo A / B de la ronda de clasificación de un concurso","Qualification Group","fase",""],["Gr","Grupo de clasificación","Qualifying Group","fase",""],
+ ["60m · 100m · 200m · 400m","Velocidad","metres","prueba",""],["800m · 1500m · 3000m · 5000m · 10,000m","Medio fondo y fondo","metres","prueba",""],
+ ["3000mSC","3000 metros con obstáculos","Steeplechase","prueba",""],["60mH · 100mH · 110mH · 400mH","Carreras con vallas","Hurdles","prueba",""],
+ ["HJ","Salto de altura","High Jump","prueba",""],["PV","Salto con garrocha","Pole Vault","prueba",""],["LJ","Salto largo","Long Jump","prueba",""],["TJ","Salto triple","Triple Jump","prueba",""],
+ ["SP","Impulsión de bala","Shot Put","prueba",""],["DT","Lanzamiento de disco","Discus Throw","prueba",""],["HT","Lanzamiento de martillo","Hammer Throw","prueba",""],["JT","Lanzamiento de jabalina","Javelin Throw","prueba",""],
+ ["Pen · Hep · Dec","Pentatlón · Heptatlón · Decatlón","Combined Events","prueba",""],
+ ["20kmRW · 35kmRW","Marcha atlética 20 km · 35 km","Race Walk","prueba",""],["Mar RWR","Relevo mixto de marcha en distancia maratón","Marathon Race Walk Relay","prueba",""],
+ ["HMar · Mar","Media maratón (21.0975 km) · Maratón (42.195 km)","Half Marathon · Marathon","prueba",""],["RMile","Milla en ruta","Road Mile","prueba",""],
+ ["4 × 100mR · 4 × 400mR Mx","Relevo 4×100 · Relevo 4×400 mixto","Relays","prueba",""],
+ ["WAS","Serie World Athletics: campeonatos organizados directamente por WA","World Athletics Series","comp",""],
+ ["WCH","Campeonato Mundial","World Athletics Championships","comp",""],["WIC","Mundial en pista cubierta","World Indoor Championships","comp",""],
+ ["WU20","Mundial sub-20","World U20 Championships","comp",""],["WXC","Mundial de campo traviesa","World Cross-Country Championships","comp",""],
+ ["WRW","Mundial de marcha por equipos","World Race Walking Team Championships","comp",""],["WRR","Mundial de carreras en ruta","World Road Running Championships","comp",""],["WRE","Relevos mundiales","World Athletics Relays","comp",""],
+ ["OG · YOG","Juegos Olímpicos · Juegos Olímpicos de la Juventud","Olympic Games","comp",""],["DL","Liga de Diamante","Diamond League","comp",""],
+ ["WCT","Continental Tour (Gold, Silver, Bronze, Challenger)","Continental Tour","comp",""],["WCET","Circuito de pruebas combinadas","Combined Events Tour","comp",""],
+ ["CR · TR","Regla de competición · Regla técnica","Competition Rule · Technical Rule","gen",""],["BoR","Libro de Reglas: hogar en línea de reglas, reglamentos y guías","Book of Rules","gen",""],
+ ["Call Room","Cámara de llamadas: donde los atletas se presentan y pasan controles antes de su prueba","Call Room (CR)","gen",""],
+ ["Bib","Dorsal: número o identificación del atleta","Bib Number","gen",""],["CE","Prueba combinada","Combined Event","gen",""],
+ ["ES","Marca mínima de inscripción a un campeonato","Entry Standard","gen",""],["Fn","Salida falsa (Fn1…): salir antes del disparo o con tiempo de reacción menor a 0.100 s","False Start","gen","card"],
+ ["RT","Tiempo de reacción medido por los sensores de los tacos","Reaction Time","gen",""],["ms","Milésimas: se muestran cuando hay empate a la centésima (0.xxx)","Milliseconds","gen",""],
+ ["Rk","Puesto en la prueba","Rank","gen",""],["SL","Lista de salida","Start List","gen",""],["SIS","Sistema de información de salida","Start Information System","gen",""],
+ ["LOC","Comité organizador local","Local Organising Committee","gen",""],["MF","Federación miembro (en Colombia, Fecodatletismo)","Member Federation","gen",""],
+ ["MC","Ceremonia de premiación","Medal Ceremony","gen",""],["RW","Marcha atlética (definición en TR54)","Race Walking","gen",""],
+ ["U18","Sub-18: 16 o 17 años al 31 de diciembre del año en curso","Under-18","gen",""],["U20","Sub-20: 18 o 19 años al 31 de diciembre del año en curso","Under-20","gen",""],
+ ["Master","Atleta que ya cumplió 35 años","Master","gen",""],["WRk","Ranking mundial por puntos según resultado, puesto y nivel","World Rankings","gen",""],
+ ["DOB · YOB","Fecha de nacimiento · Año de nacimiento","Date / Year of Birth","gen",""],["Splits","Tiempos parciales o tiempo de cada posta de relevo","Splits","gen",""],
+ ["Standings","Orden de los atletas durante un concurso o combinada","Standings","gen",""],["Round of Trials","Ronda de intentos en saltos horizontales y lanzamientos","Round of Trials","gen",""],
+ ["Wind Speed","Velocidad media del viento en carreras al aire libre hasta 200 m y en saltos horizontales","Wind Speed","gen",""]
+];
+const SAM = [["ARG","Argentina"],["BOL","Bolivia"],["BRA","Brasil"],["CHI","Chile"],["COL","Colombia"],["ECU","Ecuador"],["GUY","Guyana"],["PAN","Panamá"],["PAR","Paraguay"],["PER","Perú"],["SUR","Surinam"],["URU","Uruguay"],["VEN","Venezuela"]];
+const DQA = {cond:"Conducta y asistencia",sal:"Salida",car:"Carreras y carriles",val:"Vallas y obstáculos",rel:"Relevos",con:"Concursos",mar:"Marcha",ruta:"Ruta, cross y montaña",otr:"Otras anotaciones"};
+const D = [
+ // [ref, mark, area, es, footnoteEN]
+ ["TR7.1","DQ","cond","Conducta impropia","Improper conduct"],
+ ["TR7.1","DQ","cond","Conducta antideportiva","Unsporting manner"],
+ ["TR7.1 [CR6.1 Nota ii/iii/iv]","DQ","cond","No acatar la orden del Delegado Médico (carrera o marcha, concurso, combinada)","Improper conduct, not complying with the order of the Medical Delegate"],
+ ["TR7.1 [TR5.1]","DQ","cond","No cumplir las normas de vestimenta, o participar tras incumplirlas","Improper conduct, not complying with the clothing rules"],
+ ["TR7.1 [TR5.2]","DQ","cond","No cumplir las normas de calzado, o participar tras incumplirlas","Improper conduct, not complying with the shoe rules"],
+ ["TR7.1 [TR5.7 / 5.8 / 5.9]","DQ","cond","No cumplir las normas de dorsales, o participar tras incumplirlas","Improper conduct, not complying with the bib rules"],
+ ["TR7.1 [TR6.1]","DQ","cond","Asistencia médica no permitida","Unsporting manner, medical assistance"],
+ ["TR7.1 [TR6.2]","DQ","cond","Dar o recibir asistencia","Unsporting manner, giving or receiving assistance"],
+ ["TR7.1 [TR6.3.1]","DQ","cond","Marcar el ritmo (pacing) con alguien ajeno a la prueba","Unsporting manner, pacing"],
+ ["TR7.1 [TR6.3.2]","DQ","cond","Tener o usar un dispositivo electrónico","Unsporting manner, possession or use of electronic device"],
+ ["TR7.1 [TR6.3.3]","DQ","cond","Usar tecnología o un aparato que dé ventaja","Unsporting manner, use of technology / an appliance"],
+ ["TR7.1 [TR6.3.4]","DQ","cond","Usar una ayuda mecánica","Unsporting manner, use of mechanical aid"],
+ ["TR7.1 [TR6.3.5]","DQ","cond","Recibir consejo o apoyo de un oficial de la competencia","Unsporting manner, provision of advice / support by an official of the competition"],
+ ["TR7.1 [TR6.3.6]","DQ","cond","Recibir apoyo físico de otro atleta","Unsporting manner, receiving physical support from another athlete"],
+ ["TR7.1 [TR16.5.1]","YC o DQ","sal","Provocar la anulación de la salida sin razón válida","Improper conduct, causing the abortion of the start without valid reason"],
+ ["TR7.1 [TR16.5.2]","YC o DQ","sal","No acatar las órdenes del juez de salida, o retrasar la salida","Improper conduct, failing to comply with the starter's commands / delaying the start"],
+ ["TR7.1 [TR16.5.3]","YC o DQ","sal","Perturbar la salida","Improper conduct, disturbing the start"],
+ ["TR16.8","DQ","sal","Salida falsa","False start"],
+ ["TR39.8.3","DQ","sal","Salida falsa en pruebas combinadas","False start"],
+ ["TR7.1 [TR17.14]","DQ","car","Recibir tiempos intermedios sin autorización","Improper conduct, indication of intermediate times without authorisation"],
+ ["TR7.1 [TR17.15.4]","DQ","car","Tomar avituallamiento fuera del puesto oficial o el de otro atleta (pista)","Unsporting manner, taking refreshment outside of official station / of another athlete"],
+ ["TR17.1.2","DQ","car","Empujar (jostling) u obstruir","Jostling / Obstruction"],
+ ["TR17.2.3","DQ","car","Infracción de carril directa: pisar fuera por completo o varias veces en la misma carrera por carriles","Lane infringement"],
+ ["TR17.2.4","DQ","car","Más de un paso dentro del bordillo, o varias infracciones en la misma carrera sin carriles","Infringement of the inside border"],
+ ["TR17.3.1","DQ","car","Infracción de carril en curva, empujado o forzado, con ventaja material","Pushed / Forced lane infringement on curve with material advantage"],
+ ["TR17.3.2","DQ","car","Infracción en recta, o sobre la línea exterior en curva, con ventaja material","Lane infringement on straight / on outer line on bend with material advantage"],
+ ["TR17.3.3","L","car","Primera infracción de carril (se anota L y se arrastra)","First lane infringement"],
+ ["TR17.3.3","DQ","car","Segunda infracción de carril (en otra carrera de la misma prueba)","Second lane infringement"],
+ ["TR17.3.4","L","car","Primera infracción del borde interior (se anota L y se arrastra)","First infringement of the inside border"],
+ ["TR17.3.4","DQ","car","Segunda infracción del borde interior","Second infringement of the inside border"],
+ ["TR17.5.1","DQ","car","Dejar el carril asignado antes de la línea de calles libres","Leaving the assigned lane before the breakline"],
+ ["TR17.5.2","DQ","car","Dejar la pista asignada antes del punto de incorporación","Leaving the assigned track before the breakpoint"],
+ ["TR17.6","DQ","car","Volver a la carrera tras abandonar la pista voluntariamente","Re-entering the race after voluntarily leaving the track"],
+ ["TR44.6","DQ","car","Pista corta: dejar el carril antes de la línea de calles libres","Leaving the assigned lane before the breakline"],
+ ["TR22.6","DQ","val","No pasar por encima de cada valla","Not going over each hurdle"],
+ ["TR22.6.1","DQ","val","Pasar la pierna por el lado de la valla, por debajo del plano horizontal de su borde superior","Leg beside the hurdle and below the horizontal plane of the top of the hurdle"],
+ ["TR22.6.2","DQ","val","Derribar o desplazar una valla de forma ilegal","Knocking down / Displacing a hurdle in an illegal way"],
+ ["TR22.6.3","DQ","val","Derribar una valla afectando a otro atleta","Knocking down a hurdle thus impacting another athlete"],
+ ["TR22.6.4","DQ","val","Desplazar una valla afectando significativamente a otro atleta","Displacing a hurdle thus significantly impacting another athlete"],
+ ["TR23.7","DQ","val","Obstáculos: no pasar por encima de cada obstáculo, o no pasar por encima o a través de la ría","Not going over each hurdle / over or through the water"],
+ ["TR23.7.1","DQ","val","Pisar al lado de la ría","Stepping beside the water jump"],
+ ["TR23.7.2","DQ","val","Obstáculos: pierna al lado, por debajo del plano superior","Leg beside the hurdle and below the horizontal plane"],
+ ["TR24.5","DQ","rel","Correr sin el testigo, o mejorar ilegalmente el agarre (guantes, sustancias)","Running without the baton / Illegally enhancing grip of the baton"],
+ ["TR24.6","DQ","rel","Falta al recuperar un testigo caído","Fault at recovering a dropped baton"],
+ ["TR24.7","DQ","rel","Entregar el testigo fuera de la zona (temprana o tardía)","Passing the baton outside the takeover zone"],
+ ["TR24.9","DQ","rel","Tomar el testigo de otro equipo","Taking the baton from another team"],
+ ["TR24.10","DQ","rel","Correr más de una posta, o usar más de dos suplentes tras empezar la competencia","Running more than one leg / Using more than allowed substitutes"],
+ ["TR24.13","DQ","rel","Cambiar la composición o el orden del equipo","Changing team composition / running order"],
+ ["TR24.15 · 24.16 · 24.17 · 24.18.1","DQ","rel","Dejar el carril antes de la línea de calles libres (4×200, combinado, 4×400, 4×800)","Leaving the assigned lane before the breakline"],
+ ["TR24.21","DQ","rel","Salir fuera de la zona de transferencia","Starting outside the takeover zone"],
+ ["TR24.22","DQ","rel","Intercambiar posiciones antes de la transferencia","Exchanging positions before takeover"],
+ ["TR24.23","DQ","rel","Empujar u obstruir en la transferencia","Jostling / Obstruction at takeover"],
+ ["TR48.1 · 48.4 · 48.5","DQ","rel","Pista corta: salir fuera de la zona o intercambiar posiciones","Starting outside the takeover zone / Exchanging positions before takeover"],
+ ["TR7.1 [TR25.5]","DQ","con","Hacer un intento en un orden distinto al establecido","Improper conduct, taking a trial in a different order"],
+ ["TR7.1 [TR25.19]","DQ","con","Abandonar el área de competencia sin permiso","Improper conduct, leaving the competition area without permission"],
+ ["TR7.1 [TR32.4.1]","DQ","con","Encintar dedos juntos","Unsporting manner, taping of fingers together"],
+ ["TR7.1 [TR32.4.2]","DQ","con","Usar un dispositivo (lanzamientos)","Unsporting manner, use of a device"],
+ ["TR7.1 [TR32.4.3]","DQ","con","Usar guantes, o guantes no conformes","Unsporting manner, use of (non-compliant) gloves"],
+ ["TR7.1 [TR32.4.4]","DQ","con","Poner una sustancia en el círculo o en el zapato","Unsporting manner, putting a substance in the circle / on the shoe"],
+ ["TR7.1 [TR32.4.5]","DQ","con","Escupir en el implemento","Unsporting manner, spitting on the implement"],
+ ["TR7.1 [TR32.4.6]","DQ","con","Poner una sustancia en el implemento","Unsporting manner, placing a substance on the implement"],
+ ["TR54.4.1","DQ","mar","Descalificación por el Juez Jefe (últimos 100 m)","Disqualification by the Chief Race Walking Judge"],
+ ["TR54.7.1","DQ","mar","Incumplir repetidamente la definición de marcha","Repeated failure to comply with the definition of Race Walking"],
+ ["TR54.7.3","DQ","mar","No entrar a la zona de penalización, o salir antes de tiempo, y seguir en carrera (si abandona: DNF)","Failing to enter / Leaving the Penalty Zone early"],
+ ["TR54.7.5","DQ","mar","Cuarta tarjeta roja","Fourth red card"],
+ ["TR54.13","DQ","mar","Acortar la distancia","Shortening the distance"],
+ ["TR7.1 [TR54.7.6]","DQ","mar","Marchista descalificado que no abandona la pista o el circuito","Improper conduct, disqualified athlete failing to leave the track / course"],
+ ["TR7.1 [TR54.10.8]","DQ","mar","Avituallamiento fuera del puesto oficial o de otro atleta (marcha)","Unsporting manner, taking refreshment outside of official station"],
+ ["TR7.1 [TR55.8.8]","DQ","ruta","Avituallamiento fuera del puesto oficial o de otro atleta (ruta)","Unsporting manner, taking refreshment outside of official station"],
+ ["TR55.5 · TR56.5","DQ","ruta","Relevos en ruta o cross: salir o completar la transferencia fuera de la zona","Starting / Completing the takeover outside the takeover zone"],
+ ["TR55.10 · TR56.9","DQ","ruta","Acortar la distancia (ruta, cross)","Shortening the distance"],
+ ["TR57.6","DQ","ruta","Montaña y trail: acortar distancia, ayuda o avituallamiento fuera de puesto, incumplir el reglamento específico","Shortening the distance / Receiving assistance / refreshment outside of official station"],
+ ["TR4.4.1","DNS","otr","Atleta confirmado que no se presenta","No show of confirmed athlete"],
+ ["TR4.4.2","DNS","otr","Atleta clasificado que no se presenta","No show of qualified athlete"],
+ ["TR4.4.3","DNF","otr","Competir sin un esfuerzo genuino (bona fide); se usa sobre todo con DNF","Competing without bona fide effort"],
+ ["TR4.5","DNS","otr","No presentarse en la cámara de llamadas","No show in Call Room"],
+ ["TR7.3 · TR7.4","RC o YRC","otr","Impedido de participar en más pruebas (atleta / equipo de relevos)","Prevented from participation in further events"]
+];
+const G = [
+ {id:"salidas",name:"Salidas",src:"Starting Guidelines (dic. 2022) y TR16 del reglamento 2026",sum:"Equipo de salidas, voces de mando, salida falsa, tarjetas y el sistema de información de salidas (SIS).",
+  html:`<div class="kv"><div><b>0.100 s</b><span>tiempo de reacción mínimo: por debajo, el SIS avisa de posible salida falsa</span></div><div><b>400 m</b><span>hasta esa distancia, salida agachada con tacos</span></div><div><b>3</b><span>auxiliares de salida como mínimo en salidas en recta</span></div></div>
+  <h3>El equipo</h3><ul><li><b>Coordinador de salidas</b> (CR22): asigna funciones, ubica al juez de salida, los jueces de retirada (recall) y los auxiliares, y enlaza con foto-finish, cronometraje, anemómetro y TV.</li><li><b>Juez de salida</b>: decide sobre las salidas falsas. Todas las rondas de una prueba, y todas las series de una ronda, las sale la misma persona.</li><li><b>Jueces de retirada</b>: vigilan carriles asignados desde otros ángulos y pueden retirar la carrera.</li><li><b>Auxiliares de salida</b>: atleta correcto en serie y carril, dorsal y número de cadera, tacos según TR15, testigos listos y tarjetas mostradas.</li><li><b>Juez Árbitro de salidas</b>: revisa el SIS y el cero del disparo con el jefe de foto-finish, decide advertencias disciplinarias y puede dejar correr «bajo protesta».</li></ul>
+  <h3>Voces de mando (TR16.2)</h3><ul><li>Hasta 400 m (incluye 4×200, relevo combinado y 4×400): «En sus marcas» y «Listos». Más de 400 m: solo «En sus marcas».</li><li>Si algo no está listo: «Arriba» (<i>Stand up</i>). En competiciones de ranking mundial las voces van en inglés; en las demás, en el idioma local, inglés o francés.</li><li>Agachados: ambas manos y al menos una rodilla en el suelo y los dos pies en las placas. En «Listos» se suben sin perder ese contacto.</li><li>No hay tiempo fijo entre voces: el disparo sale cuando todos están inmóviles.</li></ul>
+  <h3>Salida falsa (TR16.7-16.8)</h3><ul><li>Comienza el movimiento de salida cuando un pie pierde contacto con la placa o una mano con el suelo (de pie: un pie con el suelo). Subir y bajar la cadera sin perder contacto no es salida falsa, pero puede ser advertencia disciplinaria.</li><li>Salvo en combinadas, el responsable queda descalificado: tarjeta <b>roja y negra</b> (partida en diagonal). En combinadas, la primera salida falsa es advertencia con tarjeta amarilla y negra a todos; la siguiente descalifica.</li><li>En salidas de pie, un desequilibrio accidental se considera salida «inestable»: no se sanciona. Si empujan a un atleta, no se le penaliza.</li></ul>
+  <h3>Conducta en la salida (TR16.5)</h3><ul><li>Anular la salida sin razón válida, no acatar las voces o perturbar a otros: el juez anula la salida. Puede haber amarilla (DQ si se repite).</li><li>En TR16.5.1 y 16.5.2 nunca se muestra tarjeta verde. En TR16.5.3, si el atleta no provocó salida falsa de otros, se muestra verde.</li><li>Si la salida se anula por causa externa o ningún atleta es responsable: <b>tarjeta verde</b> a todos. Nunca hay verde si se mostró amarilla o roja.</li></ul>`},
+ {id:"delegado",name:"Delegado Técnico",src:"Technical Delegates Guidelines, Athlete Replacement Policy (2025) y Competition Manipulation Watch List (2024)",sum:"Autoridad técnica de la competencia, reunión técnica, listas de salida, reemplazos y desempates a la milésima.",
+  html:`<h3>Rol</h3><ul><li>Los Delegados Técnicos (DT) tienen la autoridad final sobre la parte técnica de la competencia y velan porque todo cumpla el reglamento y el Manual de Instalaciones.</li><li>Proponen horario y marcas mínimas, definen los implementos, controlan inscripciones, fijan marcas de clasificación en concursos (Q), alturas iniciales y progresiones, y organizan series y grupos de combinadas.</li><li>En Mundiales se reparten así: DT1 inscripciones, puntajes y resultados; DT2 campo de juego; DT3 oficiales y pruebas de ruta.</li><li>Aprueban los recorridos de maratón y marcha y verifican los certificados de calibración de los equipos de medición.</li></ul>
+  <h3>Reunión técnica</h3><ul><li>Dos días antes en Mundiales y uno antes en otros eventos. Dura menos de una hora y no se aceptan preguntas desde la sala: se envían por escrito antes.</li><li>Incluye cambios de horario, procedimientos y horas de cámara de llamadas y sistemas de clasificación.</li></ul>
+  <h3>Listas de salida y desempates</h3><ul><li>Los DT aprueban todas las listas de salida antes de distribuirlas. Siempre que se pueda, los atletas del mismo país van en series distintas.</li><li>Si dos atletas empatan a la centésima y eso afecta la clasificación o la siembra, se pide a foto-finish el tiempo a la milésima.</li></ul>
+  <h3>Reemplazo de atletas (Serie WA, 2025)</h3><ul><li>Tras la Ronda 1 y semifinales de pista, y la clasificación de concursos, quedan <b>dos suplentes</b> para la siguiente ronda.</li><li>Si el último cupo fue por puesto, los suplentes salen por puesto; si fue por tiempo, por los siguientes tiempos; en concursos, por las siguientes marcas.</li><li>Si el Árbitro o el Jurado ya agregaron un atleta, no se reemplaza a nadie salvo que se retire un segundo.</li></ul>
+  <h3>Integridad</h3><ul><li>Lista de vigilancia sobre manipulación de competencias: al 4 de diciembre de 2024 no hay ningún país incluido. Si una federación entra, World Athletics puede nombrar hasta 3 árbitros internacionales para sus competencias.</li></ul>`},
+ {id:"arbitro",name:"Juez Árbitro (WAR)",src:"World Athletics Gold Referee Guidelines, diciembre 2025",sum:"Funciones del Árbitro de World Athletics, el Árbitro Jefe y qué controlar en cada área.",
+  html:`<div class="kv"><div><b>4</b><span>niveles WARECS: Nacional (NAR), Bronce, Plata y Oro</span></div><div><b>8 años</b><span>de mandato; la lista Oro se actualiza cada 2 años</span></div><div><b>1 mes</b><span>antes: el Árbitro Jefe envía el rol de asignaciones a los Delegados Técnicos</span></div></div>
+  <h3>Rol</h3><ul><li>Según CR8, el WAR es el Juez Árbitro de cada prueba asignada y vela porque se cumplan las Reglas de Competición, Técnicas, reglamentos y decisiones de los Delegados Técnicos.</li><li>Cuando está disponible, también se asigna como oficial adicional, sobre todo en carreras.</li><li>El <b>Árbitro Jefe</b> no puede desautorizar a otro WAR cuando este actúa como Juez Árbitro. Organiza reuniones previas con los árbitros nacionales y un balance diario tras la competencia.</li></ul>
+  <h3>Asignaciones</h3><ul><li>Cámara de llamadas, carreras y marcha (uno como Árbitro de Salidas), un árbitro por concurso, combinadas y sala de video (uno para pista y otro para concursos).</li><li>Cámara de llamadas, video, carreras y salidas: el mismo árbitro toda la competencia, por coherencia.</li><li>En cada concurso, el mismo WAR en clasificación y final. En jabalina y disco conviene un segundo WAR en el área de caída.</li><li>Sin consenso entre árbitros decide el <b>Árbitro de Video</b> con las imágenes; en salidas decide el <b>Árbitro de Salidas</b>.</li></ul>
+  <h3>Qué revisar en concursos</h3><ul><li>Verificación de la medición electrónica o por video (EDM/VDM) antes de cada prueba.</li><li>Uso y número correcto de marcas del atleta; tiempo permitido por intento.</li><li>Que los atletas ya clasificados no sigan lanzando o saltando en la ronda de clasificación.</li><li>Lanzamientos: control de implementos, sectores bien trazados, sin práctica durante la competencia, posición de las puertas de la jaula.</li><li>Saltos: preparación de tablas de batida, nivelado de la arena, subida uniforme del listón con dos grupos, sin práctica con garrocha durante la prueba.</li></ul>
+  <h3>Posiciones sugeridas en carreras</h3><div class="tablewrap"><table><thead><tr><th>Prueba</th><th>Posiciones (A, B, C…)</th></tr></thead><tbody>
+  <tr><td>200m</td><td>Inicio de 2.ª curva · mitad de curva · final de curva · 5 m después · vista frontal</td></tr>
+  <tr><td>400m / 400mH</td><td>1.ª curva/recta final · 1.ª curva/recta opuesta · recta opuesta/2.ª curva · 2.ª curva/recta final</td></tr>
+  <tr><td>800m</td><td>Igual que 400m, con B en la línea de calles libres</td></tr>
+  <tr><td>100mH / 110mH</td><td>Vallas 1-3 · 4-6 · 7-10 · vista frontal o trasera</td></tr>
+  <tr><td>3000mSC</td><td>Cada obstáculo (H1-H4) y uno en la ría (2.ª curva)</td></tr>
+  <tr><td>4×100m</td><td>Uno por zona de transferencia más 1.ª curva</td></tr>
+  <tr><td>5000m / 10,000m</td><td>Curvas y rectas, más uno o dos en conteo de vueltas</td></tr></tbody></table></div>`},
+ {id:"inspectores",name:"Inspectores (Umpires)",src:"Umpire Guide, World Athletics",sum:"Quién coordina a los inspectores, dónde se ubican y cómo se reporta una infracción.",
+  html:`<h3>Rol</h3><ul><li>El <b>Inspector Jefe</b> es el asistente del Juez Árbitro de pista: indica dónde se ubica cada inspector y coordina sus reportes.</li><li>Los inspectores son asistentes del Juez Árbitro. No descalifican: informan, y el Árbitro decide tras estudiar los hechos.</li></ul>
+  <h3>Cómo se reporta</h3><ul><li>Levantando una <b>bandera amarilla</b> o por otro medio fiable aprobado por el Delegado Técnico, que alerta al Inspector Jefe y al Juez Árbitro.</li><li>En pista sintética se les da cinta adhesiva para marcar el punto exacto de la falta.</li><li>No reportar una infracción de cierta forma (o no reportarla) <b>no impide</b> una descalificación válida.</li></ul>
+  <h3>Ubicación</h3><ul><li>Los diagramas de la guía son una posibilidad: el Director de Reunión asigna tantos jueces como pueda según la importancia, inscritos y oficiales disponibles.</li><li>En carreras de más de 800 m, algunos inspectores alrededor de la pista vigilan empujones y obstrucciones.</li><li>Si los relevos cierran la jornada, conviene reunir como inspectores a los oficiales que ya terminaron sus funciones.</li></ul>`},
+ {id:"crono",name:"Cronometraje manual",src:"Manual Timekeeping Guide",sum:"Cualidades del cronometrador, cuántos se necesitan y cómo se determina el tiempo oficial.",
+  html:`<div class="kv"><div><b>9</b><span>cronometradores para 6 carriles (3 relojes por atleta)</span></div><div><b>12</b><span>para 8 carriles</span></div><div><b>10 / 13</b><span>si el Cronometrador Jefe solo toma al ganador</span></div><div><b>30 min</b><span>antes del inicio: hora de presentarse</span></div></div>
+  <h3>Reglas y buenas prácticas</h3><ul><li>Reaccionar a la llegada del atleta, sin anticiparla: el reloj se detiene al ver que el atleta alcanza la línea.</li><li>Ningún tiempo se comunica a nadie distinto del Cronometrador Jefe. Solo él divulga los tiempos oficiales.</li><li>Si un cronometrador se distrae en la salida o la llegada, debe anunciar «tiempo no registrado» al Jefe de inmediato.</li><li>El cronometrador no se interesa en quién gana: el puesto lo deciden los jueces de llegada.</li><li>En pruebas cortas, cada cronometrador toma un solo tiempo: el reflejo humano no separa con precisión a dos atletas a menos de 0.2 s.</li><li>Desde 3000 m se toman tiempos intermedios cada kilómetro.</li></ul>
+  <h3>El Cronometrador Jefe</h3><ul><li>Toma los tiempos a la centésima, los anota, los convierte a la décima y determina el tiempo de cada atleta.</li><li>Antes de la reunión revisa relojes, banderines en los puntos intermedios y los récords que pueden caer. Los récords mundiales con cronometraje manual se reconocen desde 1500 m.</li><li>Puede preparar una tabla de progresión vuelta a vuelta. Ejemplo para 5000 m en 13:25: 16.10 cada 100 m, 1:04.40 cada 400 m.</li><li>Al final firma la hoja de récords y la hace firmar por los cronometradores.</li></ul>`},
+ {id:"llegada",name:"Jueces de llegada y conteo de vueltas",src:"Lap Scoring Guide",sum:"Cómo se reparten los puestos entre jueces y cómo se controla a los atletas doblados.",
+  html:`<h3>Reparto de puestos</h3><div class="tablewrap"><table><thead><tr><th>Juez</th><th>Puestos que toma</th></tr></thead><tbody>
+  <tr><td>Juez Jefe</td><td>1.º</td></tr><tr><td>Juez 1</td><td>1.º y 2.º</td></tr><tr><td>Juez 2</td><td>2.º y 3.º</td></tr><tr><td>Juez 3 a 7</td><td>el suyo y el siguiente (3.º-4.º … 7.º-8.º)</td></tr><tr><td>Juez 8</td><td>8.º</td></tr></tbody></table></div>
+  <ul><li>El Juez Jefe reúne los resultados, determina los puestos y lleva los tiempos con el Cronometrador Jefe a la hoja de la prueba.</li><li><b>Nunca</b> se juzga «por carril».</li><li>Aunque haya cronometraje automático, se necesitan jueces de llegada: desde 800 m los atletas llegan por los carriles 1 y 2 y los números de cadera se caen, se mojan o quedan tapados.</li></ul>
+  <h3>Fondo y atletas doblados</h3><ul><li>Se lleva un registro vuelta a vuelta con hora aproximada de paso, para detectar doblados e indicar las vueltas restantes.</li><li>Desde 5000 m se fotografía a cada atleta que cruza la meta, aunque haya corrido vueltas de más.</li><li>La última vuelta se señala a cada atleta, normalmente con una campana.</li><li>El método simple (anotar dorsales en orden de paso y retiros) es solo para jueces con experiencia y <b>no</b> se usa en 20 km ni en la carrera de 1 hora.</li></ul>`},
+ {id:"foto",name:"Foto-finish",src:"IAAF Photo Finish Guidelines, junio 2015",sum:"El Juez Internacional de Foto-finish, las pruebas de cero y cómo leer el torso.",
+  html:`<div class="kv"><div><b>1000</b><span>líneas por segundo como mínimo (mejor 2000)</span></div><div><b>0.001 s</b><span>precisión mínima de lectura</span></div><div><b>1 · 4 · 8</b><span>carriles del «run through» de alineación</span></div><div><b>30 min</b><span>puede tardar la luz artificial en recuperarse en pista cubierta</span></div></div>
+  <h3>Roles</h3><ul><li>El <b>Juez Internacional de Foto-finish (IPFJ)</b> es el Juez Jefe: decide el orden de llegada y supervisa el sistema, el proveedor y al juez nacional.</li><li>El juez nacional (NPFJ) mantiene contacto con los Árbitros de pista y de salidas sobre descalificaciones.</li><li>La cámara oficial suele ser la exterior; la segunda queda de respaldo.</li></ul>
+  <h3>El torso</h3><ul><li>Extremo superior: la articulación externa de la clavícula, más o menos entre el tercio medio y el exterior de la distancia cuello-hombro.</li><li>Extremo inferior: la línea de la cadera, en su parte más ancha.</li><li>El cursor no va sobre el borde del dorsal si el torso no está en contacto con él.</li><li>Si no se pueden separar dos atletas, es empate: el cursor queda en la misma posición para ambos.</li><li>Silla de ruedas: cuenta el centro del eje de la rueda delantera. Ciegos: el torso del atleta debe llegar antes que el del guía; si no, se informa al Árbitro.</li></ul>
+  <h3>Durante la sesión</h3><ul><li>Prueba de cero en todas las cámaras antes de cada sesión, con foto rotulada para los Delegados Técnicos.</li><li>En clasificaciones por tiempo muy cerradas, se relee a la milésima y se deja una ampliación en el TIC para posibles reclamaciones.</li><li>Récords: dos copias de la foto para récord de área, tres para récord mundial.</li><li>Atletas que no salen o abandonan se registran como DNS o DNF; la descalificación la decide el Árbitro de pista.</li></ul>`},
+ {id:"marcha",name:"Marcha atlética",src:"Reglamento 2026 (TR54), enmiendas sep. y dic. 2025, y Race Walking Guide (IAAF, 2016)",sum:"Definición, paletas amarillas, tarjetas rojas, Juez Jefe y zona de penalización según TR54 2026.",
+  html:`<div class="note">La guía de jueces de 2016 citaba la antigua Regla 230. Este módulo sigue la <b>TR54 del reglamento 2026</b> y usa la guía solo para buenas prácticas.</div>
+  <h3>Definición (TR54.2)</h3><p>La marcha es una progresión de pasos en la que el atleta mantiene contacto con el suelo, sin pérdida de contacto visible al ojo humano. La pierna adelantada debe estar recta (sin flexionar la rodilla) desde el primer contacto con el suelo hasta que pasa por la posición vertical.</p>
+  <div class="kv"><div><b>6</b><span>jueces en pista (con el Juez Jefe)</span></div><div><b>6-9</b><span>jueces en ruta</span></div><div><b>1-2 km</b><span>circuito en ruta; menos de 1 km solo con aprobación del DT</span></div><div><b>3</b><span>rojas de 3 jueces distintos: zona de penalización o DQ</span></div></div>
+  <h3>Paletas y tarjetas</h3><ul><li><b>Paleta amarilla</b>: cuando el juez no está totalmente seguro de que el atleta cumple. Una sola por infracción a cada atleta (pérdida de contacto <code>~</code> y rodilla flexionada <code>&gt;</code>). Desde 2025 se recomienda mostrarla antes de la roja siempre que sea posible.</li><li><b>Tarjeta roja</b>: lleva número del juez, dorsal, infracción y hora. <b>Tiene efecto desde que el juez la escribe</b>, incluida la que descalifica. No se comunica al atleta. Un juez no envía dos rojas al mismo atleta.</li><li>En competiciones de alto nivel, dos rojas de jueces de la misma federación nunca bastan para descalificar.</li><li>El <b>Juez Jefe</b> puede descalificar en los últimos 100 m sin importar las rojas recibidas (TR54.4.1).</li></ul>
+  <h3>Zona de penalización (TR54.7.3)</h3><div class="tablewrap"><table><thead><tr><th>Carreras hasta</th><th class="num">Tiempo</th></tr></thead><tbody>
+  <tr><td>5000 m / 5 km</td><td class="num">0.5 min</td></tr><tr><td>10.000 m / 10 km</td><td class="num">1 min</td></tr><tr><td>Media maratón</td><td class="num">2 min</td></tr><tr><td>30.000 m / 30 km</td><td class="num">3 min</td></tr><tr><td>Maratón</td><td class="num">4 min</td></tr><tr><td>50.000 m / 50 km</td><td class="num">5 min</td></tr></tbody></table></div>
+  <ul><li>Con tres rojas, el Juez Jefe o su delegado avisa y el atleta entra a la zona por el tiempo que corresponda.</li><li>Una <b>cuarta roja</b>, de un juez distinto a los tres anteriores, descalifica (TR54.7.5).</li><li>Si no entra o sale antes y <b>sigue en carrera</b>: DQ por el Juez Árbitro. Si en cambio abandona, se anota DNF.</li><li>Si la tercera roja llega cuando ya no se puede enviar a la zona, el Árbitro suma ese tiempo a su marca final.</li><li>Distancias estándar desde 2026: pista 5000 m, 10.000 m, media maratón, maratón y 50.000 m; ruta 10 km, media maratón, maratón y 50 km.</li></ul>
+  <h3>Buenas prácticas (guía 2016)</h3><ul><li>En caso de duda, el beneficio es para el atleta.</li><li>Buen ángulo: unos 45° respecto al atleta que se acerca; en pista, desde los carriles exteriores.</li><li>Zonas críticas: aceleración de salida, adelantamientos, sprint final, dentro de un grupo, curvas, giros y puestos de avituallamiento.</li><li>Nunca se juzga por parejas, desde un vehículo, corriendo junto al atleta ni acostado en el suelo.</li><li>Los marchistas no pueden usar prendas que tapen la rodilla; las mallas largas ajustadas sí se permiten (TR5.1).</li><li>Tablero de tarjetas rojas a unos 100 m antes de la meta. En ruta, el tiempo se redondea al segundo superior: 1:22:44.32 → 1:22:45.</li></ul>`},
+ {id:"hora",name:"Carrera de una hora",src:"One Hour Race Guide",sum:"Montaje, equipos de oficiales, conteo de vueltas y medición de la distancia en 60 minutos.",
+  html:`<div class="kv"><div><b>400 m</b><span>pista exacta</span></div><div><b>20</b><span>atletas máximo por carrera</span></div><div><b>40</b><span>oficiales aproximados</span></div><div><b>59′ y 60′</b><span>disparos del juez de salida</span></div></div>
+  <h3>Antes y durante</h3><ul><li>Se anuncia como 20.000 m y una hora. Cada equipo (un cronometrador con dos relojes de doble acción y un anotador) sigue como máximo a 4 atletas.</li><li>La hoja de vueltas cuenta de 49 a 1 las vueltas restantes de los 20.000 m. El marcador de vueltas arranca en 50.</li><li>El locutor anuncia el tiempo del líder cada kilómetro y cuando faltan 5, 4, 3 y 2 minutos.</li><li>A los 45-50 minutos, cada oficial recibe una estaca numerada y sigue a su atleta caminando en sentido contrario por el césped.</li></ul>
+  <h3>Medición</h3><ul><li>Al disparo de los 60 minutos, la estaca se clava en el último contacto del atleta, a 50 cm del carril interior.</li><li>Se mide desde la línea de meta a 30 cm del bordillo y se redondea al metro completo inferior.</li><li>Ejemplo: 3 vueltas restantes en 59:20.6 y 2 en 60:35.4, más 221 m → 47 vueltas + 221 m = <b>19.021 km</b>.</li><li>Todos los oficiales permanecen en la pista hasta que el Árbitro confirme los resultados.</li></ul>`},
+ {id:"instalaciones",name:"Instalaciones y equipos",src:"Track and Field Facilities Manual (2008, 2019, cap. 6.3 de 2020, pista corta 2026) y Form of Conformity (CR28)",sum:"Marcas de la pista, zonas de transferencia, jaulas de lanzamiento, salas y verificación de la medición.",
+  html:`<h3>Colores de marcas en pista de 400 m</h3><div class="tablewrap"><table><thead><tr><th>Marca</th><th>Color</th></tr></thead><tbody>
+  <tr><td>Vallas 110mH</td><td>Azul (rojo en pistas azules)</td></tr><tr><td>Vallas 100mH</td><td>Amarillo</td></tr><tr><td>Vallas 400mH</td><td>Verde</td></tr>
+  <tr><td>Zonas de transferencia 4×100 m</td><td>Amarillo</td></tr><tr><td>Zonas 4×400 m y relevos no corridos por carril</td><td>Azul (rojo en pistas azules)</td></tr><tr><td>Línea de calles libres (800 m, 4×400 m)</td><td>Verde</td></tr></tbody></table></div>
+  <ul><li><b>Zona 4×100 m</b>: empieza 20 m antes de la línea de inicio de la posta y termina 10 m después (30 m en total).</li><li><b>Zona 4×400 m (2.º atleta)</b>: 10 m antes y 10 m después de la línea.</li><li>Radio de la curva de la pista estándar: 36.500 m.</li></ul>
+  <h3>Pista corta de 200 m</h3><ul><li>Radio de medición en carril 1: 17.500 m; peralte de 10°; carriles de 1.00 m en el óvalo y 1.22 m en la recta.</li><li>60mH mujeres: 5 vallas, 13.00 m a la primera y 8.50 m entre vallas. Hombres: 13.72 m y 9.14 m.</li></ul>
+  <h3>Jaula de martillo (cap. 6.3)</h3><ul><li>Debe detener un martillo de 7.26 kg a 32 m/s (3.72 kJ).</li><li>Red de al menos 7 m de alto atrás y 10 m en los paneles junto a las puertas; puertas móviles de 2 m de ancho y 10 m de alto.</li><li>Boca de 6 m medida a 7 m delante del centro del círculo; mínimo 3.50 m del centro a la red; red a 0.60 m de los postes.</li><li>Revisar materiales antes de cada temporada, la red antes de cada competencia y probar el material de la red al menos una vez al año.</li></ul>
+  <h3>Salas de competencia (manual 2008)</h3><ul><li>Cámara de llamadas: 1.2 m² por atleta; unos 80 m² para atletas de 3 pruebas a la vez.</li><li>Control antidopaje: sala de espera para hasta 15 atletas (unos 2 m² por persona), sala de trabajo de unos 18 m² y al menos 2 baños de 4.50 m².</li></ul>
+  <h3>Verificación de la medición (CR28)</h3><ul><li>Antes de la prueba, el Juez de Medición (científica) supervisa medidas de control con los jueces y bajo el Juez Árbitro, comparándolas con una cinta de acero calibrada.</li><li>Se registran 3 medidas de control a lo largo del rango esperado y se emite un <b>Formulario de Conformidad</b> firmado por el proveedor, el Juez de Medición, el Juez Jefe y el Juez Árbitro, que se adjunta a la hoja de resultados.</li></ul>
+  <h3>Superficies</h3><ul><li>Mineral no ligada: varias capas permeables, de material grueso abajo a fino arriba, con partículas angulares.</li><li>Césped natural: aceptable para competir y muy usado en entrenamiento, calentamiento y el área central de lanzamientos.</li><li>Tope de bala, especificación 1983/84: 1.22 m ± 0.01 de largo, aceptable bajo la nota de la regla.</li></ul>`},
+ {id:"tv",name:"Cobertura de televisión",src:"Athletics Broadcast Coverage Manual",sum:"Lo que un juez debe saber sobre la ventana de transmisión y la narrativa televisiva.",
+  html:`<div class="kv"><div><b>120 min</b><span>ventana en horario estelar</span></div><div><b>10-12</b><span>pruebas: unas 8 de pista y 4 de concursos</span></div><div><b>3-4 h</b><span>puede durar el mitin completo</span></div></div>
+  <h3>Por qué le importa al juez</h3><ul><li>Las presentaciones previas tienen límite: velocidad 3 minutos, otras carreras y concursos 2:30. Las salidas y llamados deben estar listos a tiempo.</li><li>Las pruebas de segundo nivel y clasificaciones se programan fuera de la ventana de 120 minutos.</li><li>Los <b>spotters</b> informan al director de lo que pasa en la cancha, como cuándo sube el listón o una lesión. Los oficiales no deben tapar las cámaras, sobre todo la frontal de llegada.</li><li>La narrativa sigue tres partes: comienzo (series y clasificaciones), mitad (semifinales y rondas intermedias) y final.</li></ul>`}
+];
+const PROG = {
+ "sprint":{n:"60m a 800m, vallas y relevos (8 en la final)",fin:8,rows:[[9,16,2,3,2],[17,24,3,2,2],[25,32,4,3,4,2,3,2],[33,40,5,4,4,3,2,2],[41,48,6,3,6,3,2,2],[49,56,7,3,3,3,2,2],[57,64,8,2,8,3,2,2],[65,72,9,2,6,3,2,2],[73,80,10,2,4,3,2,2],[81,88,11,2,2,3,2,2],[89,96,12,2,0,3,2,2],[97,104,13,1,11,3,2,2],[105,112,14,1,10,3,2,2]]},
+ "1500":{n:"1500m (12 en la final)",fin:12,rows:[[16,30,2,6,0],[31,45,3,8,0,2,6,0],[46,60,4,6,0,2,6,0],[61,75,5,5,0,2,6,0]],note:"En el Mundial sub-20, con 31-45 inscritos: 3 series, pasan 4 por puesto directo a la final."},
+ "3000":{n:"2000mSC, 3000m y 3000mSC (14/15 en la final)",fin:15,rows:[[20,34,2,7,0],[35,51,3,5,0],[52,68,4,7,0,2,7,0],[69,85,5,6,0,2,7,0]]},
+ "5000":{n:"5000m (16 en la final)",fin:16,rows:[[21,42,2,8,0],[43,63,3,10,0,2,8,0],[64,84,4,8,0,2,8,0],[85,105,5,6,0,2,8,0]]},
+ "10000":{n:"10,000m (20/21 en la final)",fin:21,rows:[[28,54,2,10,0],[55,81,3,7,0],[82,108,4,5,0]]},
+ "sh":{n:"Pista corta: 200m a 800m y relevos (6 en la final)",fin:6,rows:[[7,12,2,2,2],[13,18,3,2,0],[19,24,4,1,2],[25,30,5,2,2,2,3,0],[31,36,6,2,6,3,2,0],[37,42,7,2,4,3,2,0],[43,48,8,2,2,3,2,0],[49,54,9,2,0,3,2,0],[55,60,10,1,8,3,2,0]]},
+ "sh1500":{n:"Pista corta: 1500m (9/10 en la final)",fin:10,rows:[[12,18,2,5,0],[19,27,3,3,0],[28,36,4,2,1],[37,45,5,4,0,2,5,0],[46,54,6,3,0,2,5,0],[55,63,7,3,0,2,5,0]]},
+ "sh3000":{n:"Pista corta: 3000m (12 en la final)",fin:12,rows:[[16,24,2,6,0],[25,36,3,4,0],[37,48,4,3,0]]}
+};
+const MODS = {nom:"Nomenclatura",dq:"Descalificaciones",salidas:"Salidas",delegado:"Delegado Técnico",arbitro:"Juez Árbitro",inspectores:"Inspectores",crono:"Cronometraje manual",llegada:"Llegadas y vueltas",foto:"Foto-finish",marcha:"Marcha atlética",hora:"Carrera de una hora",instalaciones:"Instalaciones",rondas:"Rondas y fases"};
+const Q = [
+ {m:"nom",q:"En una hoja de resultados aparece «DNS». ¿Qué significa?",o:["No terminó","No tomó la salida","Descalificado","Sin marca válida"],a:1,e:"DNS = Did Not Start. DNF es «no terminó» y NM es «sin marca» en concursos.",s:"Terms & Abbreviations 5.3"},
+ {m:"nom",q:"Un atleta pasa a la final por tiempo en una carrera. ¿Qué marca lleva?",o:["Q","q","qR","qD"],a:1,e:"q minúscula: clasificado por tiempo (o sin marca mínima en concursos). Q mayúscula es por puesto.",s:"Terms & Abbreviations 5.3"},
+ {m:"nom",q:"¿Qué indica «qJ» junto a un resultado?",o:["Clasificado por sorteo","Clasificado por el Juez Árbitro","Clasificado por el Jurado de Apelación","Clasificado a la repesca"],a:2,e:"qJ = avanzó por decisión del Jurado de Apelación; qR por el Árbitro; qD por sorteo.",s:"Terms & Abbreviations 5.3"},
+ {m:"nom",q:"Un salto largo de 8.21 m se logró con viento de +2.4 m/s. ¿Cómo se anota?",o:["8.21A","8.21W","8.21w","8.21 NWI"],a:2,e:"w minúscula: viento a favor mayor de 2 m/s. W mayúscula es para puntuación de combinadas con más de 4 m/s.",s:"Terms & Abbreviations 5.3"},
+ {m:"nom",q:"En la hoja de salto de altura, ¿qué significa el símbolo «-»?",o:["Intento nulo","Intento válido","Renunció a ese intento (pasa)","Se retiró"],a:2,e:"o = válido, x = nulo, - = pasa, r = se retiró.",s:"Terms & Abbreviations 5.3"},
+ {m:"nom",q:"¿Qué es un atleta U20?",o:["Menor de 20 años el día de la prueba","18 o 19 años al 31 de diciembre del año en curso","16 o 17 años al 31 de diciembre","Cualquiera nacido después del 2000"],a:1,e:"U20: 18 o 19 años al 31 de diciembre del año en curso. U18: 16 o 17.",s:"Terms & Abbreviations, Glosario"},
+ {m:"nom",q:"¿Cuál es el código de federación de Colombia?",o:["CLB","COL","CO","CMB"],a:1,e:"COL, en el área de Sudamérica (SAM).",s:"Terms & Abbreviations 9"},
+ {m:"nom",q:"Una marca iguala el récord nacional. ¿Cómo se escribe?",o:["NR=","=NR","NR (eq)","eNR"],a:1,e:"Se antepone el signo igual sin espacio: =WR, =NR, =WL.",s:"Terms & Abbreviations 6"},
+ {m:"nom",q:"¿Desde qué edad un atleta es Master?",o:["30 años","35 años cumplidos","40 años","Al cumplir 35 en el año"],a:1,e:"Master: atleta que ya cumplió 35 años.",s:"Terms & Abbreviations, Glosario"},
+ {m:"nom",q:"Según el glosario, ¿cuándo hay salida falsa por tiempo de reacción?",o:["Menos de 0.100 s","Menos de 0.120 s","Menos de 0.080 s","Menos de 0.150 s"],a:0,e:"Salida falsa: antes del disparo o con tiempo de reacción menor a 0.100 s (TR16).",s:"Terms & Abbreviations, False Start"},
+ {m:"dq",q:"¿Cómo se anota una descalificación por salida falsa?",o:["DQ TR16.8","DQ TR7.1","FS","YC TR16.5"],a:0,e:"La marca DQ siempre va con la regla: salida falsa es TR16.8.",s:"Tabla DQ 2026"},
+ {m:"dq",q:"Primera infracción de carril sin ventaja, en una carrera por carriles. ¿Qué marca recibe?",o:["DQ TR17.3.3","L, que se arrastra a las siguientes listas de salida","YC","Ninguna"],a:1,e:"TR17.3.3: primera infracción = L en resultados de esa ronda y en las listas de salida siguientes de la prueba.",s:"Tabla DQ 2026"},
+ {m:"dq",q:"Un atleta pisa dos veces la línea en la misma carrera por carriles. ¿Qué regla aplica?",o:["TR17.3.3 segunda infracción","TR17.2.3","TR17.5.1","TR7.1"],a:1,e:"Si las dos infracciones son en la misma carrera, la tabla indica usar TR17.2.3 (DQ directa), no TR17.3.3.",s:"Tabla DQ 2026"},
+ {m:"dq",q:"Una entrega del testigo fuera de la zona de transferencia se anota como…",o:["DQ TR24.5","DQ TR24.7","DQ TR24.21","DQ TR24.9"],a:1,e:"TR24.7: entrega fuera de la zona, temprana o tardía. TR24.21 es salir fuera de la zona.",s:"Tabla DQ 2026"},
+ {m:"dq",q:"Un lanzador de disco usa guantes. ¿Qué anotación corresponde?",o:["DQ TR32.4.3","DQ TR7.1, con nota [TR32.4.3]","NM","YC"],a:1,e:"Las infracciones disciplinarias se anotan DQ TR7.1; la nota al pie cita TR32.4.3 (uso de guantes).",s:"Tabla DQ 2026"},
+ {m:"dq",q:"Un atleta retrasa la salida. ¿Qué puede recibir?",o:["Solo DQ","YC o DQ (TR7.1 [TR16.5.2])","Salida falsa","Nada"],a:1,e:"Las infracciones de conducta en la salida (TR16.5) pueden ser amarilla o descalificación.",s:"Tabla DQ 2026"},
+ {m:"dq",q:"Un atleta clasificado no se presenta a la siguiente ronda. ¿Qué se anota?",o:["DNF con TR4.4.3","DNS con nota TR4.4.2","DQ TR4.4.2","NM"],a:1,e:"TR4.4.2: no presentación de atleta clasificado, en combinación con DNS.",s:"Tabla DQ 2026"},
+ {m:"dq",q:"¿Dónde se ubica la marca YC en la hoja de resultados?",o:["En la columna de resultado","Entre el dorsal y el nombre","Al final, solo en la nota","En el puesto"],a:1,e:"La amarilla va en la columna entre Bib y Name, con su nota al pie.",s:"Tabla DQ 2026"},
+ {m:"dq",q:"En marcha, un atleta no entra a la zona de penalización. ¿Qué regla se cita?",o:["TR54.7.1","TR54.7.3","TR54.7.5","TR54.13"],a:1,e:"TR54.7.3: no entrar a la zona de penalización o salir antes.",s:"Tabla DQ 2026"},
+ {m:"arbitro",q:"Si los árbitros no llegan a consenso, ¿quién decide (salvo en salidas)?",o:["El Árbitro Jefe","El Delegado Técnico","El Árbitro de Video","El Jurado de Apelación"],a:2,e:"Decide el Árbitro de Video con las imágenes; en salidas, el Árbitro de Salidas.",s:"Gold Referee Guidelines 5"},
+ {m:"arbitro",q:"¿Puede el Árbitro Jefe de WA desautorizar a otro WAR que actúa como Juez Árbitro?",o:["Sí, siempre","Solo en concursos","No, en ningún caso","Solo con el Delegado Técnico"],a:2,e:"La guía es explícita: no puede, en ningún caso.",s:"Gold Referee Guidelines 4"},
+ {m:"arbitro",q:"¿Cuántos niveles tiene el sistema WARECS?",o:["3","4","5","2"],a:1,e:"Árbitro Nacional (NAR) y tres niveles WA: Bronce, Plata y Oro.",s:"Gold Referee Guidelines 1"},
+ {m:"arbitro",q:"¿En qué concursos conviene un segundo WAR en el área de caída?",o:["Bala y martillo","Jabalina y disco","Largo y triple","Todos los lanzamientos"],a:1,e:"Jabalina y disco: para supervisar el marcado de la caída y, en jabalina, la validez en el área.",s:"Gold Referee Guidelines 5"},
+ {m:"inspectores",q:"¿Cómo indica un inspector una infracción?",o:["Silbato","Bandera roja","Bandera amarilla u otro medio aprobado por el DT","Gritándole al atleta"],a:2,e:"Bandera amarilla o medio fiable aprobado por el Delegado Técnico, que alerta al Inspector Jefe y al Árbitro.",s:"Umpire Guide"},
+ {m:"inspectores",q:"¿Quién decide la descalificación tras el reporte del inspector?",o:["El inspector","El Inspector Jefe","El Juez Árbitro","El juez de salida"],a:2,e:"Los inspectores son asistentes; el Juez Árbitro decide tras estudiar los hechos.",s:"Umpire Guide"},
+ {m:"inspectores",q:"Un inspector no levantó la bandera ante una infracción. ¿Se puede descalificar igual?",o:["No","Sí, no reportarla no impide una DQ válida","Solo con video","Solo si reclama otro equipo"],a:1,e:"La guía lo aclara: no reportarla de cierta forma, o en absoluto, no impide una descalificación válida.",s:"Umpire Guide"},
+ {m:"crono",q:"¿Cuántos cronometradores se necesitan en una pista de 8 carriles (3 relojes por atleta)?",o:["8","9","12","16"],a:2,e:"12 para 8 carriles y 9 para 6, con relojes que registran dos tiempos.",s:"Manual Timekeeping Guide"},
+ {m:"crono",q:"¿A quién puede comunicar su tiempo un cronometrador?",o:["Al atleta","Al entrenador","Solo al Cronometrador Jefe","Al locutor"],a:2,e:"Ningún tiempo se divulga a nadie distinto del Cronometrador Jefe.",s:"Manual Timekeeping Guide"},
+ {m:"crono",q:"¿Por qué en pruebas cortas cada cronometrador toma un solo tiempo?",o:["Por reglamento de relojes","Porque el reflejo humano no separa bien atletas a menos de 0.2 s","Para ahorrar relojes","Por la foto-finish"],a:1,e:"Está probado que el reflejo humano no toma con precisión dos atletas separados por menos de 0.2 s.",s:"Manual Timekeeping Guide"},
+ {m:"crono",q:"El Cronometrador Jefe lee los tiempos a la centésima. ¿Qué hace luego?",o:["Los publica así","Los convierte a la décima","Los redondea al segundo","Los promedia"],a:1,e:"Anota los tiempos a 0.01, los convierte a 0.1 y determina el tiempo de cada atleta.",s:"Manual Timekeeping Guide"},
+ {m:"llegada",q:"¿Qué puestos toma el Juez 3 de llegada?",o:["Solo el 3.º","3.º y 4.º","2.º y 3.º","4.º y 5.º"],a:1,e:"Cada juez toma su puesto y el siguiente; el Juez Jefe toma el 1.º.",s:"Lap Scoring Guide"},
+ {m:"llegada",q:"¿En qué pruebas no se usa el método simple de anotar dorsales?",o:["800 m y 1500 m","20 km y carrera de 1 hora","5000 m y 10.000 m","Relevos"],a:1,e:"La guía lo excluye para 20 km y la carrera de una hora.",s:"Lap Scoring Guide"},
+ {m:"llegada",q:"¿Cómo se señala la última vuelta a cada atleta?",o:["Con bandera","Con una campana","Con el marcador","Con un disparo"],a:1,e:"Normalmente se toca una campana.",s:"Lap Scoring Guide"},
+ {m:"foto",q:"¿Dónde termina el torso por arriba, según la guía de foto-finish?",o:["En el cuello","En la punta del hombro","En la articulación externa de la clavícula","En el borde del dorsal"],a:2,e:"El extremo es la articulación externa de la clavícula, aproximadamente entre el tercio medio y el exterior cuello-hombro.",s:"Photo Finish Guidelines 3.3.2"},
+ {m:"foto",q:"¿Cuál es la velocidad mínima de escaneo de las cámaras?",o:["500 líneas/s","1000 líneas/s (mejor 2000)","100 líneas/s","5000 líneas/s"],a:1,e:"Al menos 1000 líneas por segundo, preferiblemente 2000, con precisión de 1/1000 s.",s:"Photo Finish Guidelines 3.2.1"},
+ {m:"foto",q:"En silla de ruedas, ¿qué punto define la llegada?",o:["La punta de la rueda","El torso","El centro del eje de la rueda delantera","El casco"],a:2,e:"Posición y tiempo se toman del centro del eje de la rueda delantera.",s:"Photo Finish Guidelines 3.3.5"},
+ {m:"foto",q:"¿Cuántas copias de la foto se producen para un récord mundial?",o:["1","2","3","4"],a:2,e:"Tres para récord mundial y dos para récord de área.",s:"Photo Finish Guidelines 3.3.9"},
+ {m:"foto",q:"¿Quién decide el orden de llegada en un campeonato WA?",o:["El Juez Jefe de llegada","El Juez Internacional de Foto-finish","El proveedor de cronometraje","El Árbitro de pista"],a:1,e:"El IPFJ es el Juez Jefe y decide el orden de llegada.",s:"Photo Finish Guidelines 2.3"},
+ {m:"marcha",q:"¿Cuántas paletas amarillas puede mostrar un juez al mismo atleta?",o:["Una en total","Una por cada infracción: máximo dos","Tres","Sin límite"],a:1,e:"Una por pérdida de contacto y una por rodilla flexionada.",s:"Race Walking Guide 4.1"},
+ {m:"marcha",q:"¿Puede un juez enviar una segunda roja al mismo atleta?",o:["Sí","No","Solo en los últimos 100 m","Solo con permiso del Juez Jefe"],a:1,e:"Una vez enviada la roja, ese atleta queda fuera de la carrera para ese juez.",s:"Race Walking Guide 4.1"},
+ {m:"marcha",q:"¿Qué poder especial tiene el Juez Jefe de marcha?",o:["Anular tarjetas rojas","Descalificar en los últimos 100 m sin importar las rojas","Mostrar paletas amarillas extra","Cambiar jueces de puesto en carrera"],a:1,e:"En los últimos 100 m puede descalificar cuando la forma de progresión infringe claramente la definición.",s:"Race Walking Guide 3 y 5.5"},
+ {m:"marcha",q:"En un 20 km en ruta, un tiempo de 1:22:44.32 se registra como…",o:["1:22:44","1:22:44.3","1:22:45","1:22:44.32"],a:2,e:"En ruta se lee a la centésima y se convierte al segundo superior.",s:"Race Walking Guide 9.13"},
+ {m:"marcha",q:"Según la tabla 2026, ¿qué tarjeta roja descalifica después de la zona de penalización?",o:["La tercera","La cuarta","La quinta","La segunda"],a:1,e:"TR54.7.5: cuarta tarjeta roja.",s:"Tabla DQ 2026"},
+ {m:"marcha",q:"¿Cuántos jueces lleva normalmente una prueba de marcha en pista?",o:["4","6, con el Juez Jefe","9","3"],a:1,e:"En pista: seis jueces incluyendo el Juez Jefe. En ruta: mínimo 6 y máximo 9.",s:"Race Walking Guide 3"},
+ {m:"hora",q:"¿A qué distancia del carril interior se clava la estaca?",o:["30 cm","50 cm","20 cm","1 m"],a:1,e:"La estaca se clava en el césped a 50 cm del carril interior. Se mide luego a 30 cm del bordillo.",s:"One Hour Race Guide C.4"},
+ {m:"hora",q:"¿Cómo se redondea la distancia medida tras la hora?",o:["Al metro superior","Al metro completo inferior","Al centímetro","A la décima"],a:1,e:"Se registra redondeada al metro completo inferior.",s:"One Hour Race Guide D"},
+ {m:"hora",q:"Con 47 vueltas completas en 400 m más 221 m, ¿cuál es la distancia?",o:["18.821 km","19.021 km","19.221 km","20.021 km"],a:1,e:"47 × 400 = 18.800 m + 221 m = 19.021 km.",s:"One Hour Race Guide D"},
+ {m:"instalaciones",q:"¿De qué color son las marcas de vallas de 400mH en una pista estándar?",o:["Azul","Amarillo","Verde","Blanco"],a:2,e:"110mH azul, 100mH amarillo, 400mH verde.",s:"Facilities Manual 2019, plan de marcas"},
+ {m:"instalaciones",q:"La zona de transferencia del 4×100 m empieza…",o:["10 m antes de la línea de la posta","20 m antes de la línea de la posta","30 m antes","En la línea"],a:1,e:"ZS 20 m antes de la línea de inicio de la posta y ZE 10 m después: 30 m.",s:"Facilities Manual 2019, plan de marcas"},
+ {m:"instalaciones",q:"¿Quiénes firman el Formulario de Conformidad de la medición electrónica?",o:["Solo el proveedor","Proveedor, Juez de Medición, Juez Jefe y Juez Árbitro","El Delegado Técnico","El Juez Árbitro y el atleta"],a:1,e:"Lo firman todos los que participan en la prueba de control y se adjunta a la hoja de resultados (CR28).",s:"Form of Conformity"},
+ {m:"instalaciones",q:"La jaula de martillo debe detener un martillo de 7.26 kg a…",o:["25 m/s","32 m/s","40 m/s","20 m/s"],a:1,e:"Hasta 32 m/s, una energía cinética de 3.72 kJ.",s:"Facilities Manual cap. 6.3"},
+ {m:"rondas",q:"Con 30 inscritos en 100 m, ¿cuántas series hay en la Ronda 1?",o:["3","4","5","2"],a:1,e:"Fila 25-32: 4 series, pasan 3 por puesto y 4 por tiempo a 2 semifinales.",s:"Apéndice 5 WAS"},
+ {m:"rondas",q:"¿Cómo se llama la primera fase de una carrera con varias rondas?",o:["Semifinal","Eliminatoria","Ronda 1","Clasificación"],a:2,e:"Siempre Ronda 1, nunca semifinal, salvo final directa o ronda preliminar.",s:"Terms & Abbreviations 4.1"},
+ {m:"salidas",q:"¿Qué tarjeta se muestra al atleta descalificado por salida falsa (fuera de combinadas)?",o:["Amarilla","Roja","Roja y negra, partida en diagonal","Verde"],a:2,e:"Los auxiliares levantan una tarjeta roja y negra frente al responsable.",s:"TR16.8"},
+ {m:"salidas",q:"Con un sistema SIS certificado, ¿qué tiempo de reacción indica posible salida falsa?",o:["Menos de 0.120 s","Menos de 0.100 s","Menos de 0.080 s","Menos de 0.150 s"],a:1,e:"El SIS emite la señal acústica cuando el tiempo de reacción es menor de 0.100 s.",s:"TR16, salida falsa"},
+ {m:"salidas",q:"En un 800 m, ¿qué voces da el juez de salida?",o:["«En sus marcas» y «Listos»","Solo «En sus marcas»","Solo «Listos»","Ninguna, solo el disparo"],a:1,e:"En carreras de más de 400 m (salvo 4×200, combinado y 4×400) solo se dice «En sus marcas».",s:"TR16.2"},
+ {m:"salidas",q:"Un atleta sube y baja la cadera en «Listos» sin despegar manos ni pies. ¿Qué es?",o:["Salida falsa","No es salida falsa; puede ser advertencia disciplinaria","Tarjeta verde para todos","DQ directa"],a:1,e:"Sin perder contacto con placas o suelo no hay salida falsa; puede aplicarse TR16.5.",s:"TR16.7, interpretación"},
+ {m:"salidas",q:"La salida se anula por un ruido del público. ¿Qué tarjeta ven los atletas?",o:["Amarilla","Ninguna","Verde","Amarilla y negra"],a:2,e:"Si ningún atleta es responsable, se muestra tarjeta verde a todos.",s:"TR16, salida falsa"},
+ {m:"salidas",q:"En combinadas, ¿qué pasa con la primera salida falsa de la serie?",o:["DQ del responsable","Advertencia: tarjeta amarilla y negra","Nada","Se repite sin advertencia"],a:1,e:"En combinadas la primera es advertencia; la siguiente salida falsa descalifica (TR39.8.3).",s:"TR16 y TR39.8.3"},
+ {m:"salidas",q:"Según la guía de salidas, ¿quién da la salida en todas las series de una ronda?",o:["Un juez distinto por serie","El mismo juez de salida","El coordinador","Cualquiera del equipo"],a:1,e:"Todas las rondas de una prueba y todas las series de una ronda deben salirlas el mismo juez.",s:"Starting Guidelines 4.2"},
+ {m:"delegado",q:"¿Cuándo se celebra la reunión técnica de un Campeonato Mundial?",o:["El mismo día","Un día antes","Dos días antes","Una semana antes"],a:2,e:"Dos días antes en Mundiales y uno antes en otros eventos.",s:"Technical Delegates Guidelines 4.2"},
+ {m:"delegado",q:"Dos atletas empatan a la centésima por el último cupo por tiempo. ¿Qué pide el DT?",o:["Un sorteo inmediato","Los tiempos a la milésima a foto-finish","Que ambos pasen","Repetir la carrera"],a:1,e:"Se pide a foto-finish el tiempo a 0.001 y si se pueden separar.",s:"Technical Delegates Guidelines 5.5"},
+ {m:"delegado",q:"En la Serie WA, ¿cuántos suplentes quedan tras una semifinal de pista?",o:["Uno","Dos","Tres","Ninguno"],a:1,e:"Dos atletas quedan como suplentes si un clasificado se retira.",s:"Athlete Replacement Policy"},
+ {m:"delegado",q:"¿Quién aprueba las listas de salida antes de distribuirlas?",o:["El Juez Árbitro","Los Delegados Técnicos","El secretario","El proveedor de datos"],a:1,e:"Los DT las aprueban y revisan que se apliquen las reglas de siembra.",s:"Technical Delegates Guidelines 5.5"},
+ {m:"marcha",q:"¿Cuánto dura la zona de penalización en un 10 km marcha?",o:["30 segundos","1 minuto","2 minutos","3 minutos"],a:1,e:"Hasta 10.000 m/10 km: 1 minuto. Hasta 5 km: 0.5 min; media maratón: 2 min.",s:"TR54.7.3 (2026)"},
+ {m:"marcha",q:"¿Desde cuándo tiene efecto una tarjeta roja de marcha?",o:["Cuando la recibe el Juez Jefe","Cuando se publica en el tablero","Desde que el juez la escribe","Al final de la carrera"],a:2,e:"Cada roja, incluida la que descalifica, tiene efecto desde que el juez la escribe.",s:"TR54.6 (enmienda dic. 2025)"},
+ {m:"marcha",q:"Un marchista no entra a la zona de penalización y abandona la carrera. ¿Qué se anota?",o:["DQ TR54.7.3","DNF","DNS","YC"],a:1,e:"Desde noviembre de 2025 solo hay DQ si continúa en carrera; si abandona, es DNF.",s:"TR54.7.3 (enmienda sep. 2025)"},
+ {m:"dq",q:"Desde diciembre de 2025, ¿cuántos suplentes puede usar un relevo tras empezar la competencia?",o:["Cuatro","Tres","Dos","Ninguno"],a:2,e:"TR24.10 redujo de cuatro a dos los atletas suplentes adicionales.",s:"TR24.10 (enmienda dic. 2025)"},
+ {m:"dq",q:"A un atleta de relevo se le cae el testigo hacia adelante. ¿Debe volver al punto donde lo soltó?",o:["Sí, siempre","No; puede recogerlo si no acorta distancia ni estorba","Su equipo queda descalificado","Lo recoge un juez"],a:1,e:"Desde noviembre de 2025 ya no hay que volver al punto; basta no acortar distancia ni estorbar.",s:"TR24.6"},
+ {m:"rondas",q:"En pruebas combinadas, ¿cómo se llaman los concursos?",o:["Series","Grupos","Rondas","Mangas"],a:1,e:"Las carreras son series (h1, h2) y los concursos, grupos (A, B).",s:"Terms & Abbreviations 4.3"}
+];
+const DL="https://worldathletics.org/download/download?filename=";
+const LIB=[
+ ["Reglamento de Competición y Técnico – edición 2026","1 ene 2026","df5b2373-0019-4fab-9c1a-e8409ee99bef.pdf"],
+ ["Enmiendas de julio de 2026","1 jul 2026","d345c869-4ecd-43b9-96d7-dfdf270d51a9.pdf"],
+ ["Enmiendas de marzo de 2026","19 mar 2026","1878ae9f-6548-458d-91be-9aa22fb1be13.pdf"],
+ ["Enmiendas de diciembre de 2025","3 dic 2025","f2fd722f-7bd9-419a-9fc5-c4a027e4f550.pdf"],
+ ["Enmiendas de septiembre de 2025 – Parte II","1 nov 2025","b5da2afd-32d6-414b-8d6c-215f6f385541.pdf"],
+ ["Tabla de reglas aplicables a descalificaciones","1 ene 2026","918b6aa5-1337-4ea5-9227-11cf6f6a9530.pdf"],
+ ["Guía de Árbitros Oro","15 dic 2025","239ea6dd-85c3-4a06-9c6b-1cd54f6a2bf7.pdf"],
+ ["Guía de salidas (Starting Guidelines)","9 feb 2023","8c0101f9-d212-45ea-a949-452f292d0990.pdf"],
+ ["Guía de Delegados Técnicos","11 feb 2020","b903d404-c111-448a-b59f-e628502c17a9.pdf"],
+ ["Guía de video y Árbitro de Video","9 feb 2021","b00a1d05-efae-4703-ad20-607272ab501c.pdf"],
+ ["Guía de foto-finish","11 feb 2020","4423f7ca-84bd-401d-b326-c074cebc4800.pdf"],
+ ["Guía de control de calzado","1 ene 2026","0e15e5cc-7345-4485-bba8-863b4f82c173.pdf"],
+ ["Política de reemplazo de atletas (Serie WA)","28 ago 2025","e605f276-5b2e-4356-97f0-3ce4027b71e8.pdf"],
+ ["Términos y abreviaturas","5 jul 2023","WA_Terms__Abbreviations_EN%20-%20July%202023v2.pdf"],
+ ["Tablas de rondas, series y clasificación","10 nov 2023","54941256-b031-4194-8461-067971a30887.pdf"],
+ ["Marcha atlética: guía de juzgamiento","13 abr 2016","829b6e82-c23b-4072-96c2-705a3c7d2ccc.pdf"]
+];
+
+/* ================= ÍCONOS (24×24, trazo) ================= */
+const ICON={
+ salida:'<path d="M3 19h18"/><path d="M6 19l2.5-6h3.5l-1 6"/><path d="M13 19l2-4h3.5l-.5 4"/><path d="M8.5 13l-1-3"/>',
+ meta:'<rect x="3" y="7" width="13" height="10" rx="2"/><circle cx="9.5" cy="12" r="2.6"/><path d="M16 10.5l5-2.5v8l-5-2.5"/>',
+ curva:'<path d="M6 21V3.5"/><path d="M6 4h11l-2.5 4L17 12H6"/>',
+ relevos:'<path d="M5 19L19 5"/><path d="M3.5 17.5l3 3"/><path d="M17.5 3.5l3 3"/>',
+ ria:'<path d="M5 20V9"/><path d="M19 20V9"/><path d="M4 9h16"/><path d="M4 12.5h16"/><path d="M2 21c2 0 2-1.2 4-1.2s2 1.2 4 1.2 2-1.2 4-1.2 2 1.2 4 1.2 2-1.2 4-1.2"/>',
+ saltos:'<path d="M2 19h8"/><path d="M10 19c1.5-7 6-11 12-11"/><rect x="14" y="17" width="8" height="3" rx="1"/><circle cx="16" cy="6" r="1.6" class="fill"/>',
+ lanz:'<circle cx="12" cy="18" r="3"/><path d="M10 15.5L5 4"/><path d="M14 15.5L19 4"/><path d="M7 8.5c3.2-1.4 6.8-1.4 10 0"/>',
+ marcha:'<ellipse cx="8" cy="15" rx="2.6" ry="4"/><ellipse cx="16" cy="9" rx="2.6" ry="4"/><path d="M8 21.5v-.5"/><path d="M16 15.5v-.5"/>',
+ camara:'<rect x="5" y="3" width="12" height="18" rx="1"/><path d="M17 21h3"/><circle cx="14" cy="12.5" r="1.1" class="fill"/><path d="M8 7h6"/>',
+ marcador:'<rect x="2.5" y="5" width="19" height="11" rx="1.5"/><path d="M6 9h5"/><path d="M6 12h8"/><path d="M8 16v4"/><path d="M16 16v4"/>',
+ secretaria:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.8h6V4"/><path d="M8.5 9.5h7"/><path d="M8.5 13h7"/><path d="M8.5 16.5h4"/>',
+ video:'<rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10l6-3v10l-6-3"/><circle cx="6.5" cy="10" r="1" class="fill"/>',
+ tic:'<circle cx="12" cy="13.5" r="7"/><path d="M12 13.5V9.5"/><path d="M10 3h4"/><path d="M12 3v3.5"/><path d="M18.5 7l1.5-1.5"/>',
+ calent:'<path d="M12 3l6.5 16h-13z"/><path d="M8.2 12.5h7.6"/><path d="M3 21h18"/>',
+ route:'<circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"/>'
+};
+const ic=(id)=>`<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[id]||""}</svg>`;
+
+/* ================= PUESTOS ================= */
+const SPOTS=[
+ {id:"tic",name:"Centro técnico",k:"Tribuna principal",x:262,y:584,special:"tic",mods:["delegado"],why:"Reunión técnica, listas de salida y rondas"},
+ {id:"camara",name:"Cámara de llamadas",k:"Antes de entrar a la pista",x:122,y:42,mods:[],kw:/camara|cámara|calzado|dns|dorsal/,dq:a=>a[2]==="otr"||/TR5\./.test(a[0]),why:"Identidad, dorsales, vestimenta",
+  intro:"Último control antes de competir: identidad, dorsales, vestimenta, calzado y objetos prohibidos.",
+  facts:`<div class="kv"><div><b>1.2 m²</b><span>por atleta al dimensionar la sala</span></div><div><b>DNS</b><span>si no se presenta en la cámara (TR4.5)</span></div></div>
+  <ul><li>Si existe un <b>punto de reunión</b>, cuenta como parte de la cámara: allí puede hacerse la primera revisión de dorsales y bolsos (CR29, 2025).</li><li>El control de calzado <b>no</b> se hace aquí: va en el área posterior a la prueba y el antidopaje siempre tiene prioridad.</li><li>Competir sin cumplir las normas de vestimenta, calzado o dorsales se anota DQ TR7.1.</li></ul>`},
+ {id:"salida",name:"Salida",k:"Inicio de la recta de 100 m",x:204,y:497,mods:["salidas"],dq:a=>a[2]==="sal",why:"Voces, salida falsa, tarjetas",
+  intro:"Aquí trabajan el juez de salida, los jueces de retirada, los auxiliares y el Juez Árbitro de salidas.",
+  facts:`<div class="kv"><div><b>0.100 s</b><span>reacción mínima antes de que el SIS avise</span></div><div><b>2 voces</b><span>hasta 400 m: «En sus marcas» y «Listos»</span></div></div>
+  <ul><li>Salida falsa: un pie pierde contacto con la placa o una mano con el suelo antes del disparo. Tarjeta <b>roja y negra</b> (salvo combinadas).</li><li>Anular sin razón, no acatar las voces o perturbar: advertencia amarilla y DQ si se repite (TR16.5).</li><li>Si nadie es responsable: <b>tarjeta verde</b> a todos.</li></ul>`},
+ {id:"curva",name:"Curva e inspectores",k:"Primera y segunda curva",x:70,y:186,mods:["inspectores"],dq:a=>a[2]==="car",why:"Carriles, bordillo, calles libres",
+  intro:"En las curvas se concentran las infracciones de carril, los empujones y el paso por la línea de calles libres.",
+  facts:`<ul><li>El inspector levanta la <b>bandera amarilla</b> y marca el punto con cinta; decide el Juez Árbitro.</li><li>Primera infracción de carril sin ventaja: <b>L</b>, que se arrastra a las listas siguientes. La segunda: DQ.</li><li>Más de un paso dentro del bordillo, o salir por completo del carril: DQ directa (TR17.2.3 / 17.2.4).</li><li>Dejar el carril antes de la línea verde de calles libres: DQ TR17.5.1.</li></ul>`},
+ {id:"relevos",name:"Zonas de relevo",k:"Zonas de transferencia en amarillo",x:742,y:80,mods:[],kw:/relevo|testigo|transferencia|suplente/,dq:a=>a[2]==="rel",why:"Testigo, zona, suplentes",
+  intro:"La entrega se juzga dentro de la zona de transferencia por la posición del testigo, no por la del atleta.",
+  facts:`<div class="kv"><div><b>30 m</b><span>zona 4×100: 20 m antes y 10 m después de la línea de la posta</span></div><div><b>2</b><span>suplentes máximos tras empezar la competencia (TR24.10)</span></div></div>
+  <ul><li>Entrega fuera de la zona: DQ TR24.7. Salir fuera de la zona: TR24.21.</li><li>Testigo caído: lo recoge quien lo soltó; puede salir del carril si no acorta distancia ni estorba, y cruza la meta con él.</li><li>Una sola marca de cinta de hasta 0.05 × 0.40 m en el propio carril.</li><li>4×100 mixto: hombre, mujer, hombre, mujer.</li></ul>`},
+ {id:"ria",name:"Vallas y ría",k:"Vallas y obstáculos",x:150,y:304,mods:[],kw:/valla|obstacul|ria\b|ría/,dq:a=>a[2]==="val",why:"Paso de valla, ría",
+  intro:"Se juzga el paso por encima de cada valla u obstáculo y por encima o a través de la ría.",
+  facts:`<ul><li>Pierna por el costado de la valla, por debajo de su borde superior: DQ TR22.6.1.</li><li>Derribar una valla de forma ilegal: DQ. Un desplazamiento menor que no afecta a otro atleta no lleva necesariamente a DQ (interpretación 2025).</li><li>Obstáculos: pisar al lado de la ría es DQ TR23.7.1.</li><li>Marcas de vallas en la pista: 110 m en azul, 100 m en amarillo, 400 m en verde.</li></ul>`},
+ {id:"meta",name:"Meta y foto-finish",k:"Final de la recta principal",x:711,y:548,mods:["foto","llegada","crono","hora"],dq:a=>/^TR17\.6|^TR4/.test(a[0]),why:"Torso, cronometraje, vueltas",
+  intro:"En la meta se cruzan el foto-finish, los jueces de llegada, los cronometradores y el conteo de vueltas.",
+  facts:`<div class="kv"><div><b>1000 fps</b><span>mínimo en competiciones de ranking mundial (100 en las demás)</span></div><div><b>0.001 s</b><span>lectura para desempatar cupos</span></div></div>
+  <ul><li>Cuenta el <b>torso</b>, hasta la articulación externa de la clavícula y la línea de la cadera; no cabeza, brazos ni piernas.</li><li>Cada juez de llegada toma su puesto y el siguiente; nunca se juzga «por carril».</li><li>El tiempo manual se lee a la centésima y se convierte a la décima.</li></ul>`},
+ {id:"saltos",name:"Saltos",k:"Largo, triple, altura y garrocha",x:668,y:126,mods:[],kw:/salto|garrocha|liston|batida|altura/,dq:a=>/TR25/.test(a[0]),why:"Batida, tiempos, medición",
+  intro:"El juez de saltos controla la batida, el tiempo de cada intento, las marcas del atleta y la medición.",
+  facts:`<div class="kv"><div><b>120 fps</b><span>video de batida en 4K, obligatorio en ranking mundial</span></div><div><b>o · x · –</b><span>válido, nulo, pasa</span></div></div>
+  <ul><li>Sin tecnología, la tabla de plastilina sigue como respaldo.</li><li>Garrocha: es nulo si el cuerpo o la garrocha tocan el suelo, incluida la colchoneta, más allá del fondo del cajetín antes de pasar el listón.</li><li>Los saltómetros no se mueven una vez corre el tiempo del intento.</li><li>Desde marzo de 2026 puede cambiarse el orden de intentos en cualquier ronda de clasificación (TR4.3).</li><li>Verificar EDM/VDM y nivelar la arena antes de cada prueba.</li></ul>`},
+ {id:"lanz",name:"Lanzamientos",k:"Jaula, círculos y sector",x:236,y:304,mods:["instalaciones"],kw:/lanz|jaula|martillo|jabalina|disco|guante|implemento/,dq:a=>/TR32/.test(a[0]),why:"Implementos, jaula, ayudas",
+  intro:"Control de implementos, del sector de caída, de la jaula y de las ayudas prohibidas en el círculo.",
+  facts:`<div class="kv"><div><b>7.26 kg</b><span>martillo a 32 m/s que la jaula debe detener</span></div><div><b>34.92°</b><span>ángulo del sector de caída</span></div></div>
+  <ul><li>Prohibido: guantes, encintar dedos juntos, sustancias en el círculo, el zapato o la jabalina, y escupir en el implemento. Se anota DQ TR7.1.</li><li>Cinta por fuera del zapato: permitida si se muestra al Juez Jefe antes del intento.</li><li>Desde el 31 de octubre de 2025 no valen las jabalinas de 700 g con especificación 2024.</li><li>Antes de la prueba: 3 medidas de control con cinta de acero y Formulario de Conformidad (CR28).</li></ul>`},
+ {id:"marcha",name:"Circuito de marcha",k:"Puerta de maratón",x:30,y:430,mods:["marcha"],dq:a=>a[2]==="mar",why:"Paletas, rojas, penalización",
+  intro:"Los jueces de marcha trabajan solos, cada uno en su zona, con paletas amarillas y tarjetas rojas.",
+  facts:`<div class="kv"><div><b>3 rojas</b><span>de jueces distintos: zona de penalización</span></div><div><b>1 min</b><span>de penalización en 10 km</span></div></div>
+  <ul><li>Infracciones: pérdida de contacto <code>~</code> y rodilla flexionada <code>&gt;</code>.</li><li>La roja tiene efecto desde que el juez la escribe. Cuarta roja: DQ.</li><li>El Juez Jefe puede descalificar en los últimos 100 m.</li></ul>`},
+ {id:"video",name:"Sala de video",k:"Tribuna principal · Juez Árbitro",x:604,y:584,mods:["arbitro"],dq:()=>false,why:"Consenso, revisión, decisión final",
+  intro:"El Árbitro de Video revisa las imágenes y decide cuando los árbitros no logran consenso.",
+  facts:`<ul><li>Sin consenso decide el <b>Árbitro de Video</b>; en salidas, el <b>Árbitro de Salidas</b> (CR18.1).</li><li>El Árbitro Jefe no puede desautorizar a otro árbitro WA que actúa como Juez Árbitro.</li><li>Antes de competir se revisan las imágenes oficiales, las comunicaciones y el área de trabajo.</li></ul>`},
+ {id:"secretaria",name:"Secretaría de resultados",k:"Tribuna principal",x:434,y:584,special:"results",why:"Siglas y descalificaciones"},
+ {id:"marcador",name:"Marcador",k:"Noticias del reglamento",x:628,y:32,special:"news",why:"Cambios oficiales y anotaciones"},
+ {id:"calent",name:"Calentamiento",k:"Zona de práctica",x:952,y:150,special:"practice",why:"Rondas de 10 preguntas"}
+];
+
+/* ================= PLANO SVG ================= */
+const NS="http://www.w3.org/2000/svg", svg=$("#stadium");
+const cx=500,cy=290,h=211,Rin=182.5,LW=6.1,Rout=Rin+8*LW,S=5; // 5 unidades = 1 m
+const oval=R=>`M${cx-h},${cy-R} L${cx+h},${cy-R} A${R},${R} 0 0 1 ${cx+h},${cy+R} L${cx-h},${cy+R} A${R},${R} 0 0 1 ${cx-h},${cy-R} Z`;
+function el(tag,a,p){const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;}
+// punto en la curva derecha: phi=0 abajo, phi=PI arriba
+const rb=(R,phi)=>[cx+h+R*Math.sin(phi),cy+R*Math.cos(phi)];
+const lb=(R,phi)=>[cx-h-R*Math.sin(phi),cy-R*Math.cos(phi)];
+function radial(fn,phi,lane,stroke,w){const a=fn(Rin+(lane-1)*LW+.4,phi),b=fn(Rin+lane*LW-.4,phi);el("line",{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke,"stroke-width":w||1.6});}
+function drawStadium(){
+  el("rect",{x:0,y:0,width:1000,height:622,fill:"var(--stands)"});
+  for(let r=246;r<=292;r+=6) el("path",{d:oval(r),fill:"none",stroke:"var(--stands-line)","stroke-width":1});
+  // marcador
+  el("rect",{x:398,y:14,width:204,height:36,rx:4,fill:"var(--board)"});
+  const bt=el("text",{x:500,y:32,"text-anchor":"middle","dominant-baseline":"central",class:"board-txt",id:"board-text"});bt.textContent="AULA DE JUECES · META";
+  el("path",{d:oval(Rout+14),fill:"var(--apron)"});
+  // pista y extensión de recta (110 m)
+  el("rect",{x:cx+h-110*S-6,y:cy+Rin,width:110*S-2*h+6+2,height:8*LW,fill:"var(--track)"});
+  el("path",{d:oval(Rout),fill:"var(--track)"});
+  for(let i=1;i<8;i++) el("path",{d:oval(Rin+i*LW),fill:"none",stroke:"var(--lane)","stroke-width":.6,opacity:.8});
+  for(let i=1;i<8;i++) el("line",{x1:cx+h-110*S-6,y1:cy+Rin+i*LW,x2:cx-h,y2:cy+Rin+i*LW,stroke:"var(--lane)","stroke-width":.6,opacity:.8});
+  el("line",{x1:cx+h-110*S-6,y1:cy+Rout,x2:cx-h,y2:cy+Rout,stroke:"var(--lane)","stroke-width":.6,opacity:.8});
+  // césped
+  el("path",{d:oval(Rin),fill:"var(--grass)"});
+  const clip=el("clipPath",{id:"inf"});el("path",{d:oval(Rin)},clip);
+  const g=el("g",{"clip-path":"url(#inf)"});
+  for(let y=cy-Rin;y<cy+Rin;y+=36) el("rect",{x:cx-h-Rin,y,width:2*(h+Rin),height:18,fill:"var(--grass-2)"},g);
+  el("path",{d:oval(Rin),fill:"none",stroke:"var(--lane)","stroke-width":1.8});
+  // meta y números de carril
+  el("line",{x1:cx+h,y1:cy+Rin,x2:cx+h,y2:cy+Rout,stroke:"var(--lane)","stroke-width":3});
+  for(let i=1;i<=8;i++){const t=el("text",{x:cx+h+8,y:cy+Rin+(i-.5)*LW,class:"lane-num"});t.textContent=i;}
+  // salidas 100 m y 110 m
+  el("line",{x1:cx+h-100*S,y1:cy+Rin,x2:cx+h-100*S,y2:cy+Rout,stroke:"var(--lane)","stroke-width":2});
+  el("line",{x1:cx+h-110*S,y1:cy+Rin,x2:cx+h-110*S,y2:cy+Rout,stroke:"var(--lane)","stroke-width":1.4,opacity:.8});
+  // vallas 100 mH (amarillo) y 110 mH (azul)
+  for(let k=0;k<10;k++){const x=cx+h-100*S+(13+k*8.5)*S;for(let i=0;i<8;i++) el("rect",{x:x-1,y:cy+Rin+i*LW+1.6,width:2,height:LW-3.2,fill:"var(--mk-yellow)"});}
+  for(let k=0;k<10;k++){const x=cx+h-110*S+(13.72+k*9.14)*S;for(let i=0;i<8;i++) el("circle",{cx:x,cy:cy+Rin+(i+.5)*LW,r:1.1,fill:"var(--mk-blue)"});}
+  // 400 m escalonada en la primera curva (7.04 m por carril aprox.)
+  for(let n=2;n<=8;n++){const Rm=Rin+(n-.5)*LW;radial(rb,(n-1)*7.04*S/Rm,n,"var(--lane)",1.6);}
+  // zonas de relevo 4×100 en amarillo: fin de 1.ª curva, 2.ª recta, 3.ª
+  const zones=[[rb,Math.PI],[null,0],[lb,Math.PI]];
+  for(let n=1;n<=8;n++){const Rm=Rin+(n-.5)*LW;
+    radial(rb,Math.PI-20*S/Rm,n,"var(--mk-yellow)",1.6);
+    const y1=cy-Rin-(n-1)*LW-.4,y2=cy-Rin-n*LW+.4; el("line",{x1:cx+h-10*S,y1,x2:cx+h-10*S,y2,stroke:"var(--mk-yellow)","stroke-width":1.6});
+    el("line",{x1:cx-h+20*S,y1,x2:cx-h+20*S,y2,stroke:"var(--mk-yellow)","stroke-width":1.6});
+    radial(lb,10*S/Rm,n,"var(--mk-yellow)",1.6);
+  }
+  // línea de calles libres (verde) al final de la primera curva
+  el("line",{x1:cx+h-1,y1:cy-Rin,x2:cx+h-1,y2:cy-Rout,stroke:"var(--mk-green)","stroke-width":2.4});
+  // ría (curva izquierda, por dentro) con su desvío
+  el("path",{d:`M${cx-h-Rin+2},${cy-24} q-14,24 0,48`,fill:"none",stroke:"var(--track)","stroke-width":6});
+  el("rect",{x:116,y:288,width:28,height:32,rx:3,fill:"var(--water)"});
+  // largo y triple
+  el("rect",{x:330,y:cy-Rin+16,width:300,height:7,fill:"var(--track)"});
+  el("line",{x1:612,y1:cy-Rin+16,x2:612,y2:cy-Rin+23,stroke:"var(--lane)","stroke-width":1.4});
+  el("rect",{x:636,y:cy-Rin+10,width:48,height:19,rx:2,fill:"var(--sand)"});
+  // garrocha
+  el("rect",{x:340,y:cy+Rin-25,width:270,height:7,fill:"var(--track)"});
+  el("rect",{x:612,y:cy+Rin-36,width:30,height:29,rx:2,fill:"var(--mat)"});
+  // altura (D derecha)
+  el("path",{d:`M${cx+h+6},${cy-74} A74,74 0 0 1 ${cx+h+6},${cy+74} Z`,fill:"var(--track)",opacity:.9});
+  el("rect",{x:cx+h+84,y:cy-22,width:24,height:44,rx:2,fill:"var(--mat)"});
+  // lanzamientos: jaula, sector 34.92° y arcos cada 10 m
+  const ox=236,oy=304,half=34.92/2*Math.PI/180;
+  el("path",{d:`M${ox},${oy} L${ox+340*Math.cos(half)},${oy-340*Math.sin(half)} A340,340 0 0 1 ${ox+340*Math.cos(half)},${oy+340*Math.sin(half)} Z`,fill:"#FFFFFF",opacity:.07});
+  [-1,1].forEach(sgn=>el("line",{x1:ox,y1:oy,x2:ox+340*Math.cos(half),y2:oy+sgn*340*Math.sin(half),stroke:"var(--lane)","stroke-width":1.2,opacity:.9}));
+  for(const r of [100,150,200,250,300]) el("path",{d:`M${ox+r*Math.cos(half)},${oy-r*Math.sin(half)} A${r},${r} 0 0 1 ${ox+r*Math.cos(half)},${oy+r*Math.sin(half)}`,fill:"none",stroke:"var(--lane)","stroke-width":.6,opacity:.55});
+  el("path",{d:`M${ox+15},${oy-22} A27,27 0 1 0 ${ox+15},${oy+22}`,fill:"none",stroke:"var(--cage)","stroke-width":3.2});
+  el("circle",{cx:ox,cy:oy,r:6.3,fill:"var(--apron)",stroke:"var(--lane)","stroke-width":1});
+  el("circle",{cx:262,cy:226,r:5.3,fill:"var(--apron)",stroke:"var(--lane)","stroke-width":1});
+  el("path",{d:"M267,222 a6,6 0 0 1 0,8",fill:"none",stroke:"var(--lane)","stroke-width":2.2});
+  // cotas del plano
+  el("line",{x1:cx-h,y1:cy-Rout-8,x2:cx+h,y2:cy-Rout-8,class:"dim-line"});
+  [cx-h,cx+h].forEach(x=>el("line",{x1:x,y1:cy-Rout-12,x2:x,y2:cy-Rout-4,class:"dim-line"}));
+  el("rect",{x:cx-150,y:cy-Rout-21,width:52,height:12,fill:"var(--stands)"});const d1=el("text",{x:cx-124,y:cy-Rout-12,"text-anchor":"middle",class:"dim"});d1.textContent="84.39 m";
+  {const e=rb(Rin,Math.PI*0.22); el("line",{x1:cx+h,y1:cy,x2:e[0],y2:e[1],class:"dim-line","stroke-dasharray":"3 3"});
+  const d2=el("text",{x:cx+h+28,y:cy+92,class:"dim"});d2.textContent="R 36.50 m";}
+  // tribuna principal, puerta de maratón, cámara de llamadas, calentamiento
+  el("rect",{x:200,y:558,width:470,height:46,rx:8,fill:"var(--apron)"});
+  const tt=el("text",{x:435,y:612,class:"stand-txt"});tt.textContent="TRIBUNA PRINCIPAL";
+  el("rect",{x:0,y:404,width:44,height:52,fill:"var(--apron)"});
+  el("rect",{x:84,y:22,width:76,height:42,rx:6,fill:"var(--apron)"});
+  el("rect",{x:924,y:104,width:76,height:94,rx:8,fill:"var(--grass)",opacity:.9});
+  // escala gráfica
+  const sx=840,sy=596; el("line",{x1:sx,y1:sy,x2:sx+100,y2:sy,stroke:"var(--muted)","stroke-width":1.4});
+  [0,50,100].forEach(d=>el("line",{x1:sx+d,y1:sy-4,x2:sx+d,y2:sy+4,stroke:"var(--muted)","stroke-width":1.2}));
+  const st=el("text",{x:sx+50,y:sy-8,"text-anchor":"middle",class:"dim"});st.textContent="0 — 10 — 20 m";
+  // marcadores
+  SPOTS.forEach(sp=>{
+    const g=el("g",{class:"pin",tabindex:"0",role:"button","aria-label":sp.name,"data-id":sp.id,transform:`translate(${sp.x},${sp.y})`,"data-x":sp.x,"data-y":sp.y});
+    el("circle",{r:26,fill:"transparent"},g);
+    el("circle",{class:"ring",r:17},g);
+    const ig=el("g",{class:"ico",transform:"translate(-11,-11) scale(.92)"},g); ig.innerHTML=ICON[sp.id];
+    const ck=el("g",{class:"chk",transform:"translate(13,-13)"},g);
+    el("circle",{r:7,fill:"var(--ok)"},ck); el("path",{d:"M-3.2,0 l2.2,2.3 l4,-4.4",fill:"none",stroke:"#fff","stroke-width":1.8,"stroke-linecap":"round","stroke-linejoin":"round"},ck);
+    const tip=el("g",{class:"tip"},g);
+    const w=sp.name.length*7.6+20, above=sp.y>60, ty=above?-48:28;
+    let tx=-w/2; if(sp.x+tx<6) tx=6-sp.x; if(sp.x+tx+w>994) tx=994-sp.x-w;
+    el("rect",{x:tx,y:ty,width:w,height:22,rx:5},tip);
+    const t=el("text",{x:tx+w/2,y:ty+11.5,"text-anchor":"middle","dominant-baseline":"central"},tip); t.textContent=sp.name;
+    g.addEventListener("click",()=>openSpot(sp.id,null,true));
+    g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openSpot(sp.id,null,true);}});
+  });
+}
+
+/* pines más grandes en pantallas pequeñas (área táctil) */
+function sizePins(){const w=svg.getBoundingClientRect().width;if(!w)return;const px=w/vb[2];const k=Math.max(1,Math.min(2.6,42/(34*px)));
+  svg.querySelectorAll(".pin").forEach(p=>p.setAttribute("transform",`translate(${p.dataset.x},${p.dataset.y}) scale(${k.toFixed(3)})`));}
+if(window.ResizeObserver) new ResizeObserver(()=>{sizePins();fitPanel();}).observe(svg); else window.addEventListener("resize",()=>{sizePins();fitPanel();});
+/* ---------- acercamiento (firma) ---------- */
+const FULL=[0,0,1000,622]; let vb=FULL.slice(), anim=null;
+function setVB(v){vb=v;svg.setAttribute("viewBox",v.map(n=>n.toFixed(2)).join(" "));sizePins();const z=vb[2]<999;svg.classList.toggle("zoomed",z);$(".map").classList.toggle("zoomed",z);}
+function zoomTo(t){
+  if(anim) cancelAnimationFrame(anim);
+  if(reduce){setVB(t);return;}
+  const from=vb.slice(),t0=performance.now(),D=650;
+  const step=now=>{const p=Math.min(1,(now-t0)/D),e=p===1?1:1-Math.pow(2,-10*p);setVB(from.map((f,i)=>f+(t[i]-f)*e));if(p<1)anim=requestAnimationFrame(step);};
+  anim=requestAnimationFrame(step);
+}
+function zoomSpot(sp){const w=440,hh=w*622/1000;let x=sp.x-w/2,y=sp.y-hh/2;x=Math.max(0,Math.min(1000-w,x));y=Math.max(0,Math.min(622-hh,y));zoomTo([x,y,w,hh]);$("#zoom-out").hidden=false;}
+$("#zoom-out").onclick=()=>{zoomTo(FULL);$("#zoom-out").hidden=true;};
+
+function fitPanel(){const pn=$("#panel");if(window.matchMedia("(max-width:900px)").matches){pn.style.maxHeight="";return;}const h=$(".map").getBoundingClientRect().height;if(h)pn.style.maxHeight=Math.max(h,520)+"px";}
+function tabsFade(){const t=$("#p-tabs");t.classList.toggle("more-right",t.scrollWidth>t.clientWidth+4&&t.scrollLeft+t.clientWidth<t.scrollWidth-4);}
+$("#p-tabs").addEventListener("scroll",tabsFade);
+/* ================= PROGRESO ================= */
+const visited=()=>store.get("aj-visited",[]);
+function markVisited(id){const v=visited();if(!v.includes(id)){v.push(id);store.set("aj-visited",v);}renderProgress();}
+const passed=()=>store.get("aj-pass",[]);
+function markPassed(id){const p=passed();if(!p.includes(id)){p.push(id);store.set("aj-pass",p);}renderProgress();}
+function renderProgress(){
+  const v=visited(),p=passed();
+  $("#m-num").textContent=`${p.length} de ${SPOTS.length}`;
+  $("#segs").innerHTML=SPOTS.map(s=>`<i class="${p.includes(s.id)?"on":v.includes(s.id)?"seen":""}" title="${s.name}"></i>`).join("");
+  svg.querySelectorAll(".pin").forEach(el=>el.classList.toggle("visited",p.includes(el.dataset.id)));
+}
+
+/* ================= PANEL ================= */
+let current=null;
+function setHead(icon,title,where){$("#p-ico").innerHTML=icon;$("#p-title").textContent=title;$("#p-where").textContent=where;}
+function renderHome(){
+  current=null; $("#p-back").hidden=true; $("#p-tabs").hidden=true;
+  svg.querySelectorAll(".pin").forEach(p=>p.classList.remove("active"));
+  setHead(ic("route"),"Recorrido del juez","Los puestos en el orden de un día de competencia");
+  const v=visited(),pp=passed();
+  const latest=newsDocs&&newsDocs.length?(newsDocs[0].data()||{}):null;
+  $("#p-body").innerHTML=`<p class="lede">Cada punto del plano es un puesto de juzgamiento. Ábrelo para ver qué se controla allí, las faltas que se anotan y preguntas de práctica.</p>
+   ${pp.length===SPOTS.length?`<div class="done-card"><b>Recorrido completo</b><span>Aprobaste los 14 puestos. Repasa cuando quieras desde el Calentamiento.</span></div>`:`<p class="src">Un puesto queda aprobado cuando aciertas al menos 2 de sus 3 preguntas de práctica.</p>`}
+   ${latest?`<button class="headline" type="button" id="hl"><span class="k">ÚLTIMA NOTICIA · ${esc(fmtDate(latest.fecha)).toUpperCase()}</span><b>${esc(latest.titulo)}</b></button>`:""}
+   <ol class="route">${SPOTS.map(s=>`<li class="${pp.includes(s.id)?"done":""}"><button type="button" data-id="${s.id}"><span class="n"></span>${ic(s.id)}<span class="t">${s.name}<small>${s.why}</small></span><span class="st">${pp.includes(s.id)?"Aprobado":v.includes(s.id)?"Visto":""}</span></button></li>`).join("")}</ol>`;
+  $("#p-body").querySelectorAll(".route button").forEach(b=>b.onclick=()=>openSpot(b.dataset.id,null,true));
+  const hl=$("#hl"); if(hl) hl.onclick=()=>openSpot("marcador","news",true);
+}
+$("#p-back").onclick=()=>{renderHome();zoomTo(FULL);$("#zoom-out").hidden=true;history.replaceState(null,"",location.pathname+location.search);};
+
+function openSpot(id,tab,fromUser){
+  const sp=SPOTS.find(s=>s.id===id); if(!sp) return;
+  current=sp;
+  svg.querySelectorAll(".pin").forEach(p=>p.classList.toggle("active",p.dataset.id===id));
+  setHead(ic(sp.id),sp.name,sp.k);
+  $("#p-back").hidden=false;
+  const tabs = sp.special==="news"?[["news","Noticias"],["dec","Descifrar"]]
+    : sp.special==="results"?[["terms","Siglas"],["dq","Descalificaciones"],["quiz","Practicar"]]
+    : sp.special==="practice"?[["prac","Práctica"]]
+    : sp.special==="tic"?[["here","Qué se hace"],["calc","Rondas"],["quiz","Practicar"],["docs","Documentos"]]
+    : [["here","Qué se juzga"],["dq","Faltas"],["quiz","Practicar"]];
+  const tb=$("#p-tabs"); tb.hidden=false;
+  tb.innerHTML=tabs.map(([k,n],i)=>`<button type="button" role="tab" data-t="${k}" aria-selected="${tab?k===tab:i===0}">${n}</button>`).join("");
+  tb.querySelectorAll("button").forEach(b=>b.onclick=()=>{tb.querySelectorAll("button").forEach(x=>x.setAttribute("aria-selected",x===b));renderTab(b.dataset.t);});
+  renderTab(tab||tabs[0][0]);
+  zoomSpot(sp);
+  history.replaceState(null,"","#"+id);
+  markVisited(id); if(sp.special==="news") markPassed(id);
+  tabsFade();
+  if(fromUser&&window.matchMedia("(max-width:900px)").matches) setTimeout(()=>$("#panel").scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"}),reduce?0:450);
+}
+
+function modButtons(ids){
+  const best=store.get("aj-best",{});
+  return `<div class="mods">${ids.map(id=>{const g=G.find(x=>x.id===id);if(!g)return"";const b=best[id];
+    return `<button type="button" class="mod" data-g="${id}"><span><b>${g.name}</b><br><small>${g.sum}</small></span><small style="white-space:nowrap">${b==null?"Leer guía →":"Mejor: "+b+" %"}</small></button>`}).join("")}</div>`;
+}
+function bindMods(root){root.querySelectorAll(".mod[data-g]").forEach(b=>b.onclick=()=>readGuide(b.dataset.g));}
+function readGuide(id){
+  const g=G.find(x=>x.id===id),body=$("#p-body");
+  body.innerHTML=`<button type="button" class="more" id="gb">← Volver a ${esc(current.name)}</button><h3 style="font-size:1.6rem;margin:0">${g.name}</h3><p class="src">Fuente: ${g.src}</p>${g.html}<div class="row"><button class="btn" type="button" id="gq">Practicar este módulo</button></div>`;
+  $("#gb").onclick=()=>renderTab($("#p-tabs [aria-selected=true]").dataset.t);
+  $("#gq").onclick=()=>{openSpot("calent","prac",true);setTimeout(()=>startPractice(id),0);};
+  body.scrollTop=0;
+}
+function dqPill(m){const c=/YC/.test(m)?"yc":m==="L"?"l":/DN/.test(m)?"dns":"dq";return `<span class="pill ${c}">${esc(m)}</span>`}
+function dqTable(rows){
+  if(!rows.length) return `<p class="src">Este puesto no tiene infracciones propias en la tabla 2026: aquí se revisan las de los demás.</p>`;
+  return `<div class="tablewrap"><table><thead><tr><th>Regla</th><th>Marca</th><th>Infracción</th></tr></thead><tbody>${rows.map(r=>`<tr><td><code>${esc(r[0])}</code></td><td>${dqPill(r[1])}</td><td>${esc(r[3])}</td></tr>`).join("")}</tbody></table></div>`;
+}
+function spotQs(sp){let pool=Q.filter(q=>(sp.mods||[]).includes(q.m));if(sp.kw){pool=pool.concat(Q.filter(q=>sp.kw.test(norm(q.q+" "+q.e))&&!pool.includes(q)));}return pool;}
+function runQuiz(container,pool,n,onEnd){
+  const qs=shuffle(pool).slice(0,n); let i=0,ok=0;
+  const draw=()=>{
+    if(!qs.length){container.innerHTML=`<p class="src">Aún no hay preguntas para este puesto.</p>`;return;}
+    if(i>=qs.length){const pct=Math.round(ok/qs.length*100);if(onEnd)onEnd(pct);
+      container.innerHTML=`<div class="q"><div class="score">${ok}/${qs.length}</div><p>${pct>=60?"Bien juzgado.":"Repasa la guía y vuelve a intentarlo: se aprueba con 60 %."}</p><div class="row"><button class="btn" type="button" data-again>Otra ronda</button></div></div>`;
+      container.querySelector("[data-again]").onclick=()=>runQuiz(container,pool,n,onEnd);return;}
+    const q=qs[i];
+    container.innerHTML=`<div class="q"><span class="src">${MODS[q.m]||""} · pregunta ${i+1} de ${qs.length} · ${ok} aciertos</span><p class="qt">${esc(q.q)}</p>${q.o.map((o,j)=>`<button type="button" class="opt" data-j="${j}">${esc(o)}</button>`).join("")}<div class="fbw"></div></div>`;
+    container.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{const j=+b.dataset.j,right=j===q.a;if(right)ok++;
+      container.querySelectorAll(".opt").forEach((x,k)=>{x.disabled=true;if(k===q.a)x.classList.add("right");else if(k===j)x.classList.add("wrong");});
+      container.querySelector(".fbw").innerHTML=`<div class="fb"><b class="${right?"ok":"no"}">${right?"Correcto.":"No es esa."}</b> ${esc(q.e)} <span class="src">(${esc(q.s)})</span></div><button class="btn" type="button" style="margin-top:8px">${i+1<qs.length?"Siguiente":"Ver resultado"}</button>`;
+      const nx=container.querySelector(".fbw .btn");nx.onclick=()=>{i++;draw();};nx.focus();});
+  };
+  draw();
+}
+function renderTab(t){
+  const sp=current,body=$("#p-body");body.scrollTop=0;
+  if(t==="here"){
+    if(sp.special==="tic") body.innerHTML=`<p class="lede">El centro técnico reúne al Delegado Técnico, las listas de salida, la siembra y las reclamaciones por escrito.</p><div class="kv"><div><b>2 días</b><span>antes de un Mundial: reunión técnica</span></div><div><b>2</b><span>suplentes tras Ronda 1 y semifinales (Serie WA)</span></div></div><ul><li>Los DT aprueban todas las listas de salida y, si se puede, separan en series distintas a los atletas del mismo país.</li><li>Empate a la centésima por un cupo: se pide a foto-finish el tiempo a la milésima.</li></ul><h3>Guía de este puesto</h3>${modButtons(["delegado"])}`;
+    else body.innerHTML=`<p class="lede">${sp.intro}</p>${sp.facts}${(sp.mods||[]).length?`<h3>Guías de este puesto</h3>${modButtons(sp.mods)}`:""}`;
+    bindMods(body);
+  } else if(t==="dq"){
+    if(sp.special==="results"){renderResultsDQ(body);return;}
+    body.innerHTML=`<p class="src">Tabla de descalificaciones 2026. La marca DQ siempre va con el número de regla.</p>${dqTable(D.filter(sp.dq||(()=>false)))}`;
+  } else if(t==="quiz"){
+    body.innerHTML=`<div id="mq"></div><p class="src">Tres preguntas de este puesto. Las rondas completas están en el Calentamiento.</p>`;
+    const pool=sp.special==="tic"?Q.filter(q=>q.m==="delegado"||q.m==="rondas"):sp.special==="results"?Q.filter(q=>q.m==="nom"||q.m==="dq"):spotQs(sp);
+    runQuiz($("#mq"),pool,3,pct=>{if(pct>=60)markPassed(sp.id);});
+  } else if(t==="calc") renderCalc(body);
+  else if(t==="docs") body.innerHTML=`<p class="src">Originales en worldathletics.org. Ante cualquier diferencia prevalece el texto en inglés.</p><div class="tablewrap"><table><tbody>${LIB.map(d=>`<tr><td><a href="${DL+d[2]}" target="_blank" rel="noopener">${d[0]}</a></td><td style="white-space:nowrap">${d[1]}</td></tr>`).join("")}<tr><td colspan="2"><a href="https://worldathletics.org/about-iaaf/documents/technical-information" target="_blank" rel="noopener">Todos los documentos técnicos →</a></td></tr></tbody></table></div>`;
+  else if(t==="terms") renderTerms(body);
+  else if(t==="news") renderNewsTab(body);
+  else if(t==="dec") renderDecoder(body);
+  else if(t==="prac") renderPractice(body);
+}
+
+/* ---------- Secretaría ---------- */
+let tCat="all";
+let prefill="";
+function renderTerms(body){
+  body.innerHTML=`<p class="src">Siglas de las hojas oficiales de World Athletics con su significado en español.</p><div class="row"><input class="search" id="ts" type="search" placeholder="Buscar: DNF, viento, récord…" aria-label="Buscar sigla"></div><div class="seg" id="tc">${[["all","Todas"],...Object.entries(CATS)].map(([k,v])=>`<button type="button" data-c="${k}" aria-pressed="${k===tCat}">${v}</button>`).join("")}</div><div class="terms" id="tl"></div>`;
+  const draw=()=>{const q=norm($("#ts").value.trim());const l=T.filter(t=>(tCat==="all"||t[3]===tCat)&&(!q||norm(t.join(" ")).includes(q)));
+    $("#tl").innerHTML=l.map(t=>`<div class="term"><b>${esc(t[0])}</b><span>${esc(t[1])}<small>${esc(t[2])}</small></span></div>`).join("")||`<p class="src">Ninguna sigla coincide. Prueba con el término en inglés.</p>`;};
+  if(prefill){$("#ts").value=prefill;prefill="";}
+  $("#ts").oninput=draw;$("#tc").onclick=e=>{const b=e.target.closest("button");if(!b)return;tCat=b.dataset.c;$("#tc").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));draw();};draw();
+}
+function renderResultsDQ(body){
+  body.innerHTML=`<div class="row"><input class="search" id="ds" type="search" placeholder="Buscar: relevo, guantes, TR24…" aria-label="Buscar infracción"></div><div class="seg" id="dc">${[["all","Todas"],...Object.entries(DQA)].map(([k,v])=>`<button type="button" data-c="${k}" aria-pressed="${k==="all"}">${v}</button>`).join("")}</div><div id="dt"></div>`;
+  if(prefill){$("#ds").value=prefill;prefill="";}
+  let c="all";const draw=()=>{const q=norm($("#ds").value.trim());$("#dt").innerHTML=dqTable(D.filter(r=>(c==="all"||r[2]===c)&&(!q||norm(r.join(" ")).includes(q))));};
+  $("#ds").oninput=draw;$("#dc").onclick=e=>{const b=e.target.closest("button");if(!b)return;c=b.dataset.c;$("#dc").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));draw();};draw();
+}
+
+/* ---------- Marcador: descifrar ---------- */
+const TMAP={};T.forEach(t=>t[0].split(/\s*[·/]\s*/).forEach(c=>{const k=c.trim();if(k&&!TMAP[k])TMAP[k]=t;}));
+TMAP["CR"]=["CR","Según el contexto: récord del campeonato, regla de competición o cámara de llamadas","Championship Record / Competition Rule / Call Room","gen",""];
+function decodeStr(raw){
+  const toks=raw.trim().split(/\s+/).filter(Boolean),out=[];
+  const rule=c=>{const ex=D.filter(r=>r[0].split(/[\s·\[\]]+/).includes(c));return ex.length?ex:D.filter(r=>r[0].startsWith(c));};
+  for(let i=0;i<toks.length;i++){let t=toks[i];
+    if(t==="DQ"&&/^TR[\d.]+$/i.test(toks[i+1]||"")){const r=toks[i+1].toUpperCase(),hs=rule(r);out.push(["DQ "+r,"Descalificado por la regla "+r,hs.slice(0,3).map(x=>x[3]).join(" · ")]);i++;continue;}
+    if(/^(TR|CR)[\d.]+$/i.test(t)){const u=t.toUpperCase(),hs=rule(u);out.push([u,(u[0]==="T"?"Regla técnica ":"Regla de competición ")+u.slice(2),hs.slice(0,3).map(x=>x[3]).join(" · ")]);continue;}
+    let eq="";if(t.startsWith("=")&&t.length>1){eq="Igualó: ";t=t.slice(1);}
+    const m=t.match(/^(\d{1,2}:)?(\d{1,2}:)?\d+\.\d+([a-zA-Z]*)$/);
+    if(m){const suf=m[3]||"",base=t.slice(0,t.length-suf.length),p=[];if(suf.includes("w"))p.push("viento > 2 m/s");if(suf.includes("W"))p.push("combinadas con viento > 4 m/s");if(suf.includes("A"))p.push("altitud > 1000 m");if(suf.includes("i"))p.push("pista cubierta");out.push([t,"Marca "+base,p.length?"Condición: "+p.join(", "):"Sin códigos especiales"]);continue;}
+    const hit=TMAP[t]||TMAP[t.toUpperCase()];
+    out.push(hit?[eq?"="+t:t,eq+hit[1],hit[2]]:[t,"No reconocido","Revisa mayúsculas: Q y q no significan lo mismo"]);
+  }
+  return out;
+}
+function renderDecoder(body){
+  body.innerHTML=`<div class="board"><label for="dec">ESCRIBE UNA ANOTACIÓN DE RESULTADOS</label><input id="dec" value="DQ TR24.7" autocomplete="off" spellcheck="false"><div id="dout" style="display:grid;gap:6px"></div></div><div class="seg" id="dex">${["DQ TR16.8","qR","=WR","10.21w","2.31A","NM","DQ TR7.1 YRC","x o -"].map(e=>`<button type="button">${e}</button>`).join("")}</div>`;
+  const draw=()=>{$("#dout").innerHTML=decodeStr($("#dec").value).map(o=>`<div class="tok"><b>${esc(o[0])}</b><span>${esc(o[1])}${o[2]?`<small>${esc(o[2])}</small>`:""}</span></div>`).join("");};
+  $("#dec").oninput=draw;$("#dex").onclick=e=>{const b=e.target.closest("button");if(!b)return;$("#dec").value=b.textContent;draw();};draw();
+}
+
+/* ---------- Centro técnico: rondas ---------- */
+function renderCalc(body){
+  body.innerHTML=`<p class="src">Apéndice 5 del reglamento de la Serie WA: series por ronda y cuántos pasan por puesto (P) y por tiempo (T).</p><div class="calc-row"><select id="ce" aria-label="Prueba">${Object.entries(PROG).map(([k,v])=>`<option value="${k}">${v.n}</option>`).join("")}</select><input id="cn" type="number" min="1" max="200" value="30" aria-label="Inscritos" style="width:100px"></div><div id="co"></div>`;
+  const calc=()=>{const p=PROG[$("#ce").value],n=parseInt($("#cn").value,10),o=$("#co");
+    if(!n){o.innerHTML=`<p class="src">Escribe el número de inscritos.</p>`;return;} if(n<p.rows[0][0]){o.innerHTML=`<p>Con ${n} inscritos: final directa.</p>`;return;}
+    const r=p.rows.find(x=>n>=x[0]&&n<=x[1]);if(!r){o.innerHTML=`<p class="src">La tabla llega hasta ${p.rows[p.rows.length-1][1]} inscritos; con más, el Delegado Técnico define el sistema.</p>`;return;}
+    const r1=r[2]*r[3]+r[4],semi=r.length>5,r2=semi?r[5]*r[6]+r[7]:null;
+    o.innerHTML=`<div class="stage-cards"><div><span class="src">Ronda 1</span><b>${r[2]} series</b><span>${r[3]} P${r[4]?` + ${r[4]} T`:""} → ${r1}</span></div>${semi?`<div><span class="src">Semifinal</span><b>${r[5]} series</b><span>${r[6]} P${r[7]?` + ${r[7]} T`:""} → ${r2}</span></div>`:""}<div><span class="src">Final</span><b>${semi?r2:r1}</b><span>atletas</span></div></div>`;};
+  $("#ce").onchange=calc;$("#cn").oninput=calc;calc();
+}
+
+/* ---------- Calentamiento ---------- */
+function renderPractice(body){
+  const best=store.get("aj-best",{});
+  body.innerHTML=`<p class="lede">Rondas de 10 preguntas con la regla citada en cada respuesta. Se aprueba con 6.</p><div class="calc-row"><select id="pm" aria-label="Módulo"><option value="all">Todos los módulos</option>${Object.entries(MODS).map(([k,v])=>`<option value="${k}">${v}${best[k]!=null?` · ${best[k]} %`:""}</option>`).join("")}</select><button class="btn" type="button" id="pgo">Empezar ronda</button></div><div id="pa"></div>`;
+  $("#pgo").onclick=()=>startPractice($("#pm").value);
+}
+function startPractice(mod){
+  const sel=$("#pm");if(sel)sel.value=mod;
+  runQuiz($("#pa"),Q.filter(q=>mod==="all"||q.m===mod),10,pct=>{const best=store.get("aj-best",{});if(mod!=="all"&&(best[mod]==null||pct>best[mod])){best[mod]=pct;store.set("aj-best",best);}if(pct>=60)markPassed("calent");});
+}
+
+/* ---------- Marcador: noticias ---------- */
+let db=null,canEdit=false,newsDocs=null,newsTag="all",newsState="Cargando noticias…";
+function fmtDate(s){const d=new Date(s+"T12:00:00");return isNaN(d)?(s||""):d.toLocaleDateString("es-CO",{day:"numeric",month:"short",year:"numeric"});}
+function renderNewsTab(body){
+  body.innerHTML=`${canEdit?`<details><summary class="more">+ Publicar noticia</summary><form class="news-form" id="nf"><input id="nf-t" required maxlength="160" placeholder="Título" aria-label="Título"><input id="nf-d" type="date" required aria-label="Fecha"><textarea id="nf-r" required maxlength="2000" placeholder="Resumen para los jueces" aria-label="Resumen"></textarea><input id="nf-u" type="url" placeholder="Enlace de la fuente (https://…)" aria-label="Enlace de la fuente"><input id="nf-tags" placeholder="Etiquetas separadas por coma" aria-label="Etiquetas"><div class="row"><button class="btn" type="submit">Publicar</button><span class="src" id="nf-msg"></span></div></form></details>`:""}<div class="seg" id="ntags"></div><div id="nlist" style="display:grid;gap:14px"></div>`;
+  if(canEdit){$("#nf-d").value=new Date().toISOString().slice(0,10);$("#nf").onsubmit=async e=>{e.preventDefault();const m=$("#nf-msg"),b=e.target.querySelector("button");m.textContent="Publicando…";b.disabled=true;
+    try{await db.collection("noticias").add({titulo:$("#nf-t").value.trim(),fecha:$("#nf-d").value,resumen:$("#nf-r").value.trim(),fuente:$("#nf-u").value.trim(),fuenteNombre:"",etiquetas:$("#nf-tags").value.split(",").map(s=>s.trim()).filter(Boolean),creado:new Date().toISOString()});m.textContent="Publicada.";e.target.reset();$("#nf-d").value=new Date().toISOString().slice(0,10);}catch(err){m.textContent="No se pudo publicar: solo los editores de la página pueden hacerlo.";}b.disabled=false;};}
+  drawNews();
+}
+function drawNews(){
+  const list=$("#nlist");if(!list)return;
+  if(!newsDocs){list.innerHTML=`<p class="src">${esc(newsState)}</p>`;return;}
+  if(!newsDocs.length){list.innerHTML=`<p class="src">Aún no hay noticias publicadas.</p>`;return;}
+  const tags=[...new Set(newsDocs.flatMap(d=>(d.data()||{}).etiquetas||[]))].sort((a,b)=>a.localeCompare(b,"es"));
+  const tb=$("#ntags");tb.innerHTML="";["all",...tags].forEach(t=>{const b=document.createElement("button");b.type="button";b.textContent=t==="all"?"Todas":t;b.setAttribute("aria-pressed",String(t===newsTag));b.onclick=()=>{newsTag=t;drawNews();};tb.append(b);});
+  const docs=newsTag==="all"?newsDocs:newsDocs.filter(d=>((d.data()||{}).etiquetas||[]).includes(newsTag));
+  list.innerHTML="";
+  docs.forEach(d=>{const n=d.data()||{};const a=document.createElement("article");a.className="news-item";
+    const dt=document.createElement("span");dt.className="date";dt.textContent=fmtDate(n.fecha);
+    const hh=document.createElement("h3");hh.textContent=n.titulo||"";
+    const p=document.createElement("p");const full=n.resumen||"";const short=full.length>240?full.slice(0,240).replace(/\s+\S*$/,"")+"…":full;p.textContent=short;
+    a.append(dt,hh,p);
+    if(full!==short){const mb=document.createElement("button");mb.type="button";mb.className="more";mb.textContent="Leer completa";mb.onclick=()=>{p.textContent=full;mb.remove();};a.append(mb);}
+    if(Array.isArray(n.etiquetas)&&n.etiquetas.length){const tg=document.createElement("div");tg.className="tags";n.etiquetas.forEach(x=>{const s=document.createElement("span");s.textContent=x;tg.append(s);});a.append(tg);}
+    const row=document.createElement("div");row.className="row";
+    if(n.fuente&&/^https?:\/\//.test(n.fuente)){const l=document.createElement("a");l.href=n.fuente;l.target="_blank";l.rel="noopener";l.textContent=n.fuenteNombre?("Fuente: "+n.fuenteNombre):"Ver fuente";row.append(l);}
+    if(canEdit){const del=document.createElement("button");del.type="button";del.className="linkbtn";del.textContent="Eliminar";del.onclick=async()=>{if(del.dataset.c!=="1"){del.dataset.c="1";del.textContent="¿Eliminar? Toca otra vez";return;}try{await db.collection("noticias").doc(d.id).delete();}catch(e){del.textContent="No se pudo eliminar";}};row.append(del);}
+    a.append(row);list.append(a);});
+}
+function setBoard(){const t=$("#board-text");if(!t||!newsDocs||!newsDocs.length)return;const s=((newsDocs[0].data()||{}).titulo||"").toUpperCase();t.textContent="▶ "+(s.length>24?s.slice(0,23)+"…":s);}
+async function initNews(){
+  try{
+    if(!window.claude||!window.claude.use){newsState="Las noticias aparecen en la página publicada.";drawNews();return;}
+    db=await window.claude.use("db");const user=await window.claude.use("user");canEdit=user?!!(await user.canEdit()):false;
+    if(!db){newsState="Inicia sesión en claude.ai para ver las noticias.";drawNews();return;}
+    db.collection("noticias").orderBy("fecha","desc").onSnapshot(s=>{newsDocs=s.docs;setBoard();
+      if(!current)renderHome();else if(current.id==="marcador")drawNews();
+    },()=>{newsState="No se pudieron cargar las noticias. Recarga la página.";drawNews();});
+  }catch(e){newsState="No se pudieron cargar las noticias.";drawNews();}
+}
+
+/* ================= BUSCADOR ================= */
+const MOD2SPOT={}; SPOTS.forEach(s=>(s.mods||[]).forEach(m=>{if(!MOD2SPOT[m])MOD2SPOT[m]=s.id;})); MOD2SPOT.tv="video";
+function searchAll(q){
+  const n=norm(q.trim()); if(n.length<2) return [];
+  const out=[];
+  SPOTS.forEach(s=>{if(norm(s.name+" "+s.why+" "+(s.k||"")).includes(n)) out.push({kind:"Puesto",t:s.name,d:s.why,go:()=>openSpot(s.id,null,true)});});
+  D.forEach(r=>{if(norm(r[0]+" "+r[3]+" "+r[4]).includes(n)) out.push({kind:"Regla",t:r[0]+" · "+r[1],d:r[3],go:()=>{prefill=r[0].split(/[\s·\[]/)[0];openSpot("secretaria","dq",true);}});});
+  T.forEach(t=>{if(norm(t[0]).startsWith(n)||norm(t[0])===n||norm(t[1]+" "+t[2]).includes(n)) out.push({kind:"Sigla",t:t[0],d:t[1],go:()=>{prefill=t[0];openSpot("secretaria","terms",true);}});});
+  G.forEach(g=>{if(norm(g.name+" "+g.sum+" "+g.html.replace(/<[^>]+>/g," ")).includes(n)) out.push({kind:"Guía",t:g.name,d:g.sum,go:()=>{openSpot(MOD2SPOT[g.id]||"tic",null,true);readGuide(g.id);}});});
+  (newsDocs||[]).forEach(d=>{const x=d.data()||{};if(norm((x.titulo||"")+" "+(x.resumen||"")).includes(n)) out.push({kind:"Noticia",t:x.titulo||"",d:fmtDate(x.fecha),go:()=>openSpot("marcador","news",true)});});
+  const rank={Sigla:0,Regla:1,Puesto:2,"Guía":3,Noticia:4};
+  return out.sort((a,b)=>{const ea=norm(a.t)===n||norm(a.t).startsWith(n)?0:1, eb=norm(b.t)===n||norm(b.t).startsWith(n)?0:1;return ea-eb||rank[a.kind]-rank[b.kind];}).slice(0,10);
+}
+let qRes=[],qSel=0;
+function drawResults(){
+  const box=$("#q-res"),inp=$("#q");
+  if(!inp.value.trim()){box.hidden=true;inp.setAttribute("aria-expanded","false");return;}
+  qRes=searchAll(inp.value); box.hidden=false; inp.setAttribute("aria-expanded","true");
+  box.innerHTML=qRes.length?qRes.map((r,i)=>`<button type="button" role="option" class="${i===qSel?"sel":""}" data-i="${i}"><span class="kind">${r.kind}</span><span>${esc(r.t)}<small>${esc(r.d)}</small></span></button>`).join(""):`<div class="none">Nada coincide con «${esc(inp.value.trim())}». Prueba con el número de regla (TR24.7), una sigla (DNF) o una palabra (testigo).</div>`;
+  box.querySelectorAll("button").forEach(b=>b.onclick=()=>pick(+b.dataset.i));
+}
+function pick(i){const r=qRes[i];if(!r)return;$("#q-res").hidden=true;$("#q").value="";$("#q").setAttribute("aria-expanded","false");r.go();}
+$("#q").addEventListener("input",()=>{qSel=0;drawResults();});
+$("#q").addEventListener("keydown",e=>{
+  if(e.key==="ArrowDown"){e.preventDefault();qSel=Math.min(qSel+1,qRes.length-1);drawResults();}
+  else if(e.key==="ArrowUp"){e.preventDefault();qSel=Math.max(qSel-1,0);drawResults();}
+  else if(e.key==="Enter"){e.preventDefault();pick(qSel);}
+  else if(e.key==="Escape"){$("#q").value="";drawResults();}
+});
+document.addEventListener("click",e=>{if(!e.target.closest(".finder"))$("#q-res").hidden=true;});
+
+/* ================= INICIO ================= */
+drawStadium(); requestAnimationFrame(()=>{sizePins();fitPanel();}); renderProgress(); renderHome(); initNews();
+const start=location.hash.slice(1); if(SPOTS.some(s=>s.id===start)) openSpot(start);
+})();
+</script>
+
+</body>
+</html>
